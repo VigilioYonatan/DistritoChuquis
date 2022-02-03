@@ -1,0 +1,121 @@
+@use '../base/variables' as var;
+
+.header{
+    width: 100%;
+    background-color: var.$verde;
+    height: 6.8125rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 30;
+}
+
+.navbar{
+    // margin:  0 auto;
+    max-width: 1600px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo{
+        width: 250px;
+
+        &__img{
+            width: 100%;
+        }
+    }
+    &-search{
+        
+        // width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 15.625rem;
+        // width: 100%;
+        border: 1px solid var.$blanco;
+        padding: .5rem;
+
+        &__input{
+            width: 100%;
+            outline: none;
+            background-color: transparent;
+            border: none;
+
+            &::placeholder{
+                color: var.$gris;
+                font-size: .9rem;
+                font-family: var.$light;
+            }
+        }
+
+        &__ico{
+            color: var.$blanco;
+        }
+    }
+
+    &-menu{
+        // width: 40%;
+        display: flex;
+        margin-right: 1rem;
+        
+        &-list{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            position: relative;
+            &__link{
+                color: var.$blanco;
+                text-decoration: none;
+                font-size: .9rem;
+                font-family: var.$regular;
+                padding: 0rem .8em;
+                text-align: center;
+            }
+
+            &-submenu{
+                width: 120%;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+         
+                bottom: -16.45rem;
+                padding: 0;
+                color: var.$blanco;
+                display: none;
+                background-color: var.$verde;
+                z-index: 20;
+                height: auto;
+                &-list{
+                    list-style: none;
+
+                    & a{
+                        display: block;
+                        text-align: center;
+                        color: var.$blanco;
+                        text-decoration: none;
+                        font-size: .9rem;
+                        margin-left: 0 .5rem ;
+                        padding: .5rem .1rem;
+                        font-family: var.$light;
+                    }
+                }
+
+                
+            }
+
+            &-linked:hover &-submenu{
+                display: block;
+                
+            }
+
+            
+        }
+
+        
+    }
+}

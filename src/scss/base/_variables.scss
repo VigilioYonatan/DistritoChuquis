@@ -1,0 +1,34 @@
+
+// colores
+$verde : #364037;
+$naranja: #986c43;
+$amarillo: #f2ce8d;
+$blanco: #fff;
+$gris: rgb(167, 165, 165);
+//mediaQUERIES
+
+
+
+
+// FUENTES
+@font-face {
+    font-family: 'ManropeL';
+    src: url('../fonts/Manrope-Light.ttf');
+}
+@font-face {
+    font-family: 'ManropeR';
+    src: url('../fonts/Manrope-Regular.ttf');
+}
+@font-face {
+    font-family: 'InterM';
+    src: url('../fonts/Inter-Medium.ttf');
+}
+@font-face {
+    font-family: 'InterB';
+    src: url('../fonts/Inter-Bold.ttf');
+}
+
+$light: 'ManropeL';
+$regular: 'ManropeR';
+$medium: 'InterM';
+$bold: 'InterB';
