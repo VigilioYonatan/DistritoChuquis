@@ -19,24 +19,26 @@
             </form>
             <ul class="navbar-menu">
                 <li class="navbar-menu-list"><a class="navbar-menu-list__link" href="">Inicio</a></li>
-                <li class="navbar-menu-list navbar-menu-list-linked"><a class="navbar-menu-list__link" href="">Distrito de Chuquis</a>
+                <li class="navbar-menu-list navbar-menu-list-linked" id="distritoChuquis"><span class="navbar-menu-list__link" href="">Distrito de Chuquis</span>
                     <ul class="navbar-menu-list-submenu">
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Costumbres</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Flora</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Fauna</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Turismo</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Caserias</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Geografia</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Carnavales</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a href="#">Sitios Arquelogicos</a></li>                      
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Costumbres</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Flora</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Fauna</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Turismo</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Caserias</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Geografia</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Carnavales</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Sitios Arquelogicos</a></li>                      
                     </ul>
                 </li>
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Blog Personal</a></li>
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Kuyaiki Photography</a></li>
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Soporte</a></li>
             </ul>
+            <button class="navbar-responsive" id="menu-hamburguer"><i class="fas fa-bars navbar-responsive__ico"></i></button>
         </nav>
         <!-- fin navbar -->
+        
     </header>
     <!-- fin header -->
     <!-- wallpaper -->
@@ -45,7 +47,7 @@
         <video class="container-wallpaper__video" src="./build/video/berna.mp4" autoplay muted loop></video>
         <div class="wallpaper">
             <picture class="wallpaper-info">
-                <img class="wallpaper-info__img" src="./build/img/perfil1.webp" alt="">
+                <img class="wallpaper-info__img" src="./build/img/berna2.webp" alt="">
                 <div class="wallpaper-info-text">
                     <h2 class="wallpaper-info-text__title">Welcome!</h2>
                     <span class="wallpaper-info-text__txt">Join my Journey</span>
@@ -55,7 +57,7 @@
                 <div class="about">     
                     <h2 class="about__title">Featured Post</h2>
                     <div class="about-new">
-                        <img  class="about-new__img" src="./build/img/perfil1.webp" alt="">
+                        <img  class="about-new__img" src="./build/img/bernaportada.webp" alt="">
                         <div class="about-new-info">
                             <span class="about-new-info__time">Dec 15, 2021 2min</span>
                             <h3 class="about-new-info__title">Top Hikes In Australia</h3>
@@ -71,5 +73,6 @@
         </div>
     </section>
     <!-- fin wallpaper -->
+    <script src="./build/js/bundle.min.js"></script>
 </body>
 </html>
