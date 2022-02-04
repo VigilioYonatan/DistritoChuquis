@@ -32,3 +32,10 @@ $light: 'ManropeL';
 $regular: 'ManropeR';
 $medium: 'InterM';
 $bold: 'InterB';
+
+
+@mixin hover {
+    @media (hover:hover) {
+        @content;
+    }
+}

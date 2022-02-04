@@ -175,7 +175,8 @@
     top: 6.825rem;
     background-color: var.$naranja;
     display: flex;
-
+    justify-content: center;
+    align-items: center;
     &-social{
         display: flex;
         flex-direction: column;
@@ -238,11 +239,29 @@
             }
         }
     }
+
+    .redes{
+        width:2.5rem;
+        
+    }
+
+
+    .redes-social__ico{
+        padding: .4rem;
+    }
+
+    
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     
     .about{
         width: 90%;
-        // height: 15rem;
+
+    }
+
+  
+
+    .redes-social__ico{
+        padding: .3rem;
     }
 }
