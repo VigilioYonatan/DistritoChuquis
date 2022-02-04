@@ -1,0 +1,107 @@
+@use '../base/variables' as var;
+.post-container{
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-top: 5rem;
+}
+
+.post__title{
+    margin-left: 3rem;
+    font-size: 2rem;
+    font-family: var.$bold;
+}
+
+.post-images{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.post-imagen{
+    width: 30%;
+    height: 21.875rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var.$naranja;
+    
+
+    &-img{
+        width: 90%;
+        height: 80%;
+        margin-top: 1rem;
+        object-fit: cover;
+        box-shadow: 0px 0px 3px black;
+        cursor: pointer;
+        position: relative;
+        &__img{
+            width: 100%;
+            height: 100%;
+        }
+
+
+        &:hover .background{
+            opacity: 1;
+            transition: opacity .5s ease;
+        }
+    }
+
+    &__title{
+        width: 90%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var.$blanco;
+        font-family: var.$regular;
+        font-size: 1rem;
+        text-align: center;
+    }
+}
+
+
+.background{
+
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.356);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__txt{
+        width: 90%;
+        color: var.$blanco;
+        text-align: center;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .post__title{
+        margin-left: 4rem;
+        font-size: 1.5rem;
+    }
+    .post-imagen{
+        width: 45%;
+        height: 23rem;
+    }
+}
+@media screen and (max-width: 800px) {
+
+    
+    .post-container{
+        padding-top: 22rem;
+    }
+
+    .post-imagen{
+        width: 90%;
+        height: 28rem;
+    }
+}
