@@ -74,7 +74,7 @@
             &__link{
                 color: var.$blanco;
                 text-decoration: none;
-                font-size: .9rem;
+                font-size: 1rem;
                 font-family: var.$regular;
                 padding: 0rem .8em;
                 text-align: center;
@@ -93,8 +93,8 @@
                 display: flex;
                 flex-direction: column;
          
-                bottom: -16.45rem;
-                padding: 0;
+                bottom: -18.05rem;
+                padding: .5em 0;
                 color: var.$blanco;
                 display: none;
                 background-color: var.$verde;
@@ -109,7 +109,7 @@
                         text-align: center;
                         color: var.$blanco;
                         text-decoration: none;
-                        font-size: .9rem;
+                        font-size: 1rem;
                         margin-left: 0 .5rem ;
                         padding: .5rem .1rem;
                         font-family: var.$light;
@@ -222,7 +222,7 @@
     .navbar-menu-list-submenu{
         // position: fixed;
         // top: 0;
-        bottom: -20.6375rem;
+        bottom: -21.6375rem;
         font-size: 1rem;
     }
 

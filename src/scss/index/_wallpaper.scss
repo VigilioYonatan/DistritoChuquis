@@ -162,6 +162,41 @@
             }
         }
     }
+
+}
+
+
+.redes{
+    position: fixed;
+    right: 0;
+    width: 3.75rem;
+    // height: 6.25rem;
+    z-index: 20;
+    top: 6.825rem;
+    background-color: var.$naranja;
+    display: flex;
+
+    &-social{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &__link{
+            text-decoration: none;
+            color: var.$blanco;
+            cursor: pointer;
+
+            &:active{
+                transform: scale(1.2);
+            }
+        }
+
+        &__ico{
+            font-size: 2rem;
+            padding: .5em;
+        }
+    }
 }
 
 
