@@ -22,7 +22,7 @@
                 <li class="navbar-menu-list"><a class="navbar-menu-list__link" href="">Inicio</a></li>
                 <li class="navbar-menu-list navbar-menu-list-linked" id="distritoChuquis"><span class="navbar-menu-list__link" href="">Distrito de Chuquis</span>
                     <ul class="navbar-menu-list-submenu">
-                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Costumbres</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuqis.html">Costumbres</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Flora</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Fauna</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Turísmo</a></li>
@@ -44,7 +44,7 @@
     </header>
     <!-- fin header -->
     <!-- wallpaper -->
-    <section class="container-wallpaper">
+    <section class="container-wallpaper" id="welcome">
         <div class="container-wallpaper__background"></div>
         <video class="container-wallpaper__video" src="./build/video/wallpaper.mp4" autoplay muted loop></video>
         <div class="wallpaper">
@@ -84,8 +84,8 @@
     <!-- fin wallpaper -->
 
     <!-- post -->
-    <section class="post-container">
-        <span class="post__title">Recent Post</span>
+    <section class="post-container" id="postRecientes">
+        <span class="post__title">Post Recientes</span>
         <div class="post-images">
             <picture class="post-imagen">
                 <div class="post-imagen-img">
@@ -147,10 +147,10 @@
 
     <!-- distrito chuquis -->
 
-    <section class="chuquis">
+    <section class="chuquis" id="chuquis">
         <h3 class="chuquis__title">Distrito de Chuquis</h3>
         <div class="chuquis-categoria">
-            <div class="carousel__contenedor">
+            <div class="carousel__contenedor" >
 
 				<div id="glider" class="carousel__lista">
 					<div class="carousel__elemento">
@@ -213,8 +213,60 @@
         </div>
     </section>
     <!-- fin distrito chuquis -->
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     <!-- footer -->
+        <footer class="footer-container">
+            <div class="footer">
+                <img src="./build/img/logo.webp" alt="" class="footer__logo">
+                <div class="footer-links">
+                    <a class="footer-links__link" href="#welcome">Welcome</a>
+                    <a class="footer-links__link" href="#postRecientes">Post recientes</a>
+                    <a class="footer-links__link" href="#chuquis">Distrito de Chuquis</a>
+                </div>
+                <div class="footer-mapa">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.945892829941!2d-76.70705058479071!3d-9.67725855498367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a862492cbc894d%3A0x44dd64d8f9016e49!2sPueb%20Chuquis%2C%20Distrito%20de%20Chuquis!5e1!3m2!1ses-419!2spe!4v1644008283786!5m2!1ses-419!2spe"  allowfullscreen="" loading="lazy"></iframe>
+                </div> 
+            </div>
+            <div class="copyright">
+                <span class="copyright__txt">&#169 All Right Reserved 2022 - 2022  </span><a  href="#welcome"class="copyright__btn"><i class="fas fa-arrow-up"></i></a> <span class="copyright__txt">By KUYAIKI PHOTOGRAPHY </span>
+            </div>
+        </footer>
+    
     <script src="./build/js/bundle.min.js"></script>
 </body>
 </html>

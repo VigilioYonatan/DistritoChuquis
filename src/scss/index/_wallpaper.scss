@@ -45,6 +45,7 @@
         // justify-content: center;
         align-items: center;
         background-color: var.$naranja;
+        z-index: 20;
 
         &__img{
             width: 79%;
@@ -57,14 +58,17 @@
         &-text{
             color: var.$blanco;
             margin-top: 1rem;
+            text-align: center;
 
             &__title{
                 font-family: var.$medium;
+                
             }
 
             &__txt{
                 margin-top: .8rem;
                 font-family: var.$light;
+                
             }
         }
     }
@@ -95,6 +99,7 @@
         margin-top: 1.5rem;
         font-family: var.$regular;
         letter-spacing: .1rem;
+        
         // padding: .2rem 0;
     }
 
@@ -121,6 +126,7 @@
             justify-content: center;
             flex-direction: column;
             // align-items: center;
+            ;
 
             &__time{
                 font-size: 1rem;
@@ -139,7 +145,7 @@
                 font-family: var.$light;
                 font-size: 1rem;
                 color: var.$blanco;
-                // text-align: center;
+                text-align: center;
                 margin: 0;
                 padding: .5em 0;
             }

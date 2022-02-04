@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "depoy" : "npx gh-pages -d build"
+    "depoy" : "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
