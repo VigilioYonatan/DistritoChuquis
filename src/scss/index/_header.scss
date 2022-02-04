@@ -81,6 +81,12 @@
                 cursor: pointer;
             }
 
+            &-linked{
+                & span{
+                    font-family: var.$bold;
+                }
+            }
+
             &-submenu{
                 width: 120%;
                 position: absolute;
@@ -94,6 +100,7 @@
                 background-color: var.$verde;
                 z-index: 20;
                 height: auto;
+          
                 &-list{
                     list-style: none;
 
@@ -106,11 +113,14 @@
                         margin-left: 0 .5rem ;
                         padding: .5rem .1rem;
                         font-family: var.$light;
-
+                        
+                        
                         &:active{
                             background-color: var.$naranja;
                         }
                     }
+
+                    
                 }
 
                 
@@ -210,9 +220,9 @@
     }
 
     .navbar-menu-list-submenu{
-        position: fixed;
+        // position: fixed;
         // top: 0;
-        bottom: 1.6375rem;
+        bottom: -20.6375rem;
         font-size: 1rem;
     }
 
@@ -248,13 +258,13 @@
     }
 }
 
-@media screen and (min-height: 851px ) {
-    .navbar-menu-list-submenu{
-        bottom: 4rem;
-    }
-}
-@media screen and (max-height: 805px ) {
-    .navbar-menu-list-submenu{
-        bottom: -2rem;
-    }
-}
+// @media screen and (min-height: 851px) {
+//     .navbar-menu-list-submenu{
+//         bottom: 4rem;
+//     }
+// }
+// @media screen and (max-height: 805px ) {
+//     .navbar-menu-list-submenu{
+//         bottom: -2rem;
+//     }
+// }
