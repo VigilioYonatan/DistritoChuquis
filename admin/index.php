@@ -21,7 +21,7 @@ if($userQuery -> num_rows){
   $userClave = $resultadoQuery['user_clave'];
 
 }else{
-  header('Location: ../index.php');
+  header('Location: ../login.php');
 }
  
 
@@ -40,15 +40,14 @@ if($userQuery -> num_rows){
       <div class="settings">
         <div class="settings-links">
           <div class="links-image">
-            <a href=""><img src="./usersImagenes/<?php echo $userFoto; ?>" alt=""></a>
+            <a href=""><img src="./mediaBD/mediaUsers/<?php echo $userFoto; ?>" alt=""></a>
             <span><?php echo $userNombre; ?></span>
           </div>
           <section class="links-link">
             <div class="link">
               <span class="link-title">Inicio</span>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
+              <a href="index.php?action=updateFotoWelcome">Foto - video Welcome</a>
+              <a href="index.php?action=redes">Redes Sociales</a>
             </div>
             <div class="link">
               <span class="link-title">Distrito Chuquis</span>
@@ -100,6 +99,13 @@ if($userQuery -> num_rows){
       switch ($action) {
         case 'configuracion':
           require_once 'configuracion.php';
+          break;
+          // inicio
+        case 'updateFotoWelcome':
+          require_once 'inicio/updateFotoWelcome.php';
+          break;
+        case 'redes':
+          require_once 'inicio/redes.php';
           break;
         
         default:

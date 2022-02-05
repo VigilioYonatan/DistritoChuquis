@@ -1,5 +1,11 @@
 <?php
 require_once './includes/db.php';
+session_start();
+
+if(isset($_SESSION['login'])){
+    header('Location: admin/index.php');
+}
+
 
 $errores = [];
 
@@ -36,6 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if($contraseña){
                 session_start();
                 $_SESSION['userCod'] = $contraseñaCod;
+                $_SESSION['login'] = true;
 
                 header('Location: admin/index.php');
             }else{
@@ -51,6 +58,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 }
+
+
 
 ?>
 
@@ -87,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
         <input class="login__btn" type="submit" value="Ingresar">
         <div class="forget">
-            <a class="forget__olvidar" href="">Me olvide La Contraseña</a>
+            <a class="forget__olvidar" href="olvidarContraseña.php">Me olvide La Contraseña</a>
             <a class="forget__crear" href="">Crear cuenta</a>
         </div>
     </form>

@@ -41,11 +41,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if(empty($errores)){
 
-        $userImagenes = './usersImagenes/';
+        $carpetaMediaBD = './mediaBD';
+        $userImagenes   = '/mediaUsers/';
 
         //crear carpeta si no exister
-        if(!is_dir($userImagenes)){
-            mkdir($userImagenes);
+        if(!is_dir($carpetaMediaBD.$userImagenes)){
+            mkdir($carpetaMediaBD.$userImagenes);
         }
 
         $nombreImagen = '';
@@ -53,12 +54,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         // si pone una imagen el usuario
         if($user_foto['name']){
-                unlink($userImagenes.$userFoto);
+                unlink($carpetaMediaBD.$userImagenes.$userFoto);
 
                 //hasheeamos el nombre de la imagen
                 $nombreImagen = md5( uniqid( rand(), true)).".jpg";
     
-                move_uploaded_file($user_foto['tmp_name'], $userImagenes.$nombreImagen);     
+                move_uploaded_file($user_foto['tmp_name'], $carpetaMediaBD.$userImagenes.$nombreImagen);     
         }else{
             $nombreImagen = $userFoto;
         }
@@ -85,16 +86,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
         <div class="configuracion-inp">
             <label class="configuracion-lbl"  for="user_nombre">Nombre:</label>
-            <input type="text" value="<?php echo $userNombre; ?>" name="user_name">
+            <input class="configuracion-input" type="text" value="<?php echo $userNombre; ?>" name="user_name">
             <?php if(isset($errores['nombreVacio'])):?>
-                <span><?php echo $errores['nombreVacio']; ?></span>
+                <span class="error-process"><?php echo $errores['nombreVacio']; ?></span>
             <?php endif; ?>
         </div>
         <div class="configuracion-inp">
             <label class="configuracion-lbl"  for="user_apellido">Apellido</label>
-            <input type="text" value="<?php echo $userApellido; ?>" name="user_apellido">
+            <input class="configuracion-input" type="text" value="<?php echo $userApellido; ?>" name="user_apellido">
             <?php if(isset($errores['apellidoVacio'])):?>
-                <span><?php echo $errores['apellidoVacio']; ?></span>
+                <span class="error-process"><?php echo $errores['apellidoVacio']; ?></span>
             <?php endif; ?>
         </div>
         <div class="configuracion-inp">
@@ -102,34 +103,34 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <span class="configuracion-info"><?php echo $userCorreo ?></span>
         </div>
         <div class="configuracion-inp">
-            <label class="configuracion-lbl"  for="user_foto">Foto:</label>
-            <input type="file" name="user_foto" >
-            <?php if(isset($errores['fotoNoDisponible'])): ?>
-                <span><?php echo $errores['fotoNoDisponible']; ?></span>
-            <?php  endif;?>
-            <?php if(isset($errores['fotoPesado'])): ?>
-                <span><?php echo $errores['fotoPesado']; ?></span>
-            <?php  endif;?>
-            <img width="100px" src="./usersImagenes/<?php echo $userFoto; ?>" alt="">
-        </div>
-        <div class="configuracion-inp">
             <label class="configuracion-lbl"  for="user_fecha">Creado el:</label>
             <span class="configuracion-info"><?php echo $userFecha ?></span>
         </div>
         <div class="configuracion-inp">
             <label class="configuracion-lbl"  for="user_clave">Clave:</label>
-            <input type="text" value="<?php echo $userClave; ?>" name="user_clave">
+            <input class="configuracion-input" type="text" value="<?php echo $userClave; ?>" name="user_clave">
             <?php if(isset($errores['claveVacio'])):?>
-                <span><?php echo $errores['claveVacio']; ?></span>
+                <span class="error-process"><?php echo $errores['claveVacio']; ?></span>
             <?php endif; ?>
         </div>
-        <input type="submit" value="Actualizar">
+        <div class="configuracion-inp-foto">
+            <label class="configuracion-lbl-file"  for="user_foto">Foto de Perfil</label>
+            <input  class="configuracion-file" type="file" name="user_foto" id="user_foto">
+            <?php if(isset($errores['fotoNoDisponible'])): ?>
+                <span class="error-process"><?php echo $errores['fotoNoDisponible']; ?></span>
+            <?php  endif;?>
+            <?php if(isset($errores['fotoPesado'])): ?>
+                <span class="error-process"><?php echo $errores['fotoPesado']; ?></span>
+            <?php  endif;?>
+            <img class="configuracion-inp-foto__img" src="./mediaBD/mediaUsers/<?php echo $userFoto; ?>" alt="">
+        </div>
+        <input class="configuracion-submit" type="submit" value="Actualizar">
 
         <?php
             $actualizadoCorrectamente = $_GET['actualizado']  ?? null;
             if($actualizadoCorrectamente == 1 && empty($errores)):
          ?>
-         <span>Actualizado Correctamente</span>
+         <span class="success-process">Actualizado Correctamente</span>
          <?php endif; ?>
     </form>
 </section>

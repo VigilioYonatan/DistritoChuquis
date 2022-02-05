@@ -3,14 +3,26 @@
 <?php require_once './includes/header.php';
 require_once './includes/db.php';
 
+session_start();
+
+//query INicio
+$queryInicio = mysqli_query($cnx, "SELECT * FROM inicio");
+$resultadoQuery = mysqli_fetch_assoc($queryInicio);
+
+$inicioWelcome = $resultadoQuery['inicio_welcomeFoto'];
+$inicioWallpaper = $resultadoQuery['inicio_welcomeWallpaper'];
+$inicioFacebook = $resultadoQuery['inicio_facebook'];
+$inicioWhatsapp = $resultadoQuery['inicio_whatsapp'];
+$inicioYoutube = $resultadoQuery['inicio_youtube'];
+
 ?>
    <!-- wallpaper -->
     <section class="container-wallpaper" id="welcome">
         <div class="container-wallpaper__background"></div>
-        <video class="container-wallpaper__video" src="./build/video/wallpaper.mp4" autoplay muted loop></video>
+        <video class="container-wallpaper__video" src="./admin/mediaBD/mediaInicio/<?php echo $inicioWallpaper; ?>" autoplay muted loop></video>
         <div class="wallpaper">
             <picture class="wallpaper-info">
-                <img class="wallpaper-info__img" src="./build/img/perfil2.webp" alt="">
+                <img class="wallpaper-info__img" src="./admin/mediaBD/mediaInicio/<?php echo $inicioWelcome; ?>" alt="">
                 <div class="wallpaper-info-text">
                     <h2 class="wallpaper-info-text__title">Welcome!</h2>
                     <span class="wallpaper-info-text__txt">Join my Journey</span>
@@ -36,9 +48,9 @@ require_once './includes/db.php';
         </div>
         <div class="redes">
             <div class="redes-social">
-                <a href="#" class="redes-social__link"><i class="fab fa-facebook redes-social__ico"></i></a>
-                <a href="#" class="redes-social__link"><i class="fab fa-whatsapp redes-social__ico"></i></i></a>
-                <a href="#" class="redes-social__link"><i class="fab fa-youtube redes-social__ico"></i></i></i></a>
+                <a href="<?php echo $inicioFacebook; ?>" target="_blank" class="redes-social__link"><i class="fab fa-facebook redes-social__ico"></i></a>
+                <a href="<?php echo $inicioWhatsapp; ?>" target="_blank" class="redes-social__link"><i class="fab fa-whatsapp redes-social__ico"></i></i></a>
+                <a href="<?php echo $inicioYoutube; ?>"  target="_blank" class="redes-social__link"><i class="fab fa-youtube redes-social__ico"></i></i></i></a>
             </div>
         </div>
     </section>
