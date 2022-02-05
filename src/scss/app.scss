@@ -7,6 +7,7 @@
 @use 'index/post';
 @use 'index/chuquis';
 @use 'index/footer';
+@use 'index/login';
 
 
 // chuquis
@@ -16,4 +17,4 @@
 
 
 //admin
-@use 'admin/admin.scss'
+@use 'admin/index.scss'
