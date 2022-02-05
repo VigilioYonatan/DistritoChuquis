@@ -32,7 +32,7 @@ if($userQuery -> num_rows){
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../build/css/app.css" />
+    <link rel="stylesheet" href="../build/css/app.css?<?php echo date('s'); ?>" />
     <title>CSS GRID DASHBOARD</title>
   </head>
   <body id="bodyAdmin">
@@ -40,7 +40,7 @@ if($userQuery -> num_rows){
       <div class="settings">
         <div class="settings-links">
           <div class="links-image">
-            <a href=""><img src="../build/img/berna2.webp" alt=""></a>
+            <a href=""><img src="./usersImagenes/<?php echo $userFoto; ?>" alt=""></a>
             <span><?php echo $userNombre; ?></span>
           </div>
           <section class="links-link">
