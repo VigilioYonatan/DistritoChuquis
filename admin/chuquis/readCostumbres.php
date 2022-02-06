@@ -2,8 +2,30 @@
 
 
 //traer datos de costumbres
+$queryCostumbres = mysqli_query($cnx, "SELECT * FROM costumbre ORDER BY costumbre_id DESC");
 
-$queryCostumbres = mysqli_query($cnx, "SELECT * FROM costumbre");
+
+//eliminar COstumbre por id
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $cod = $_POST['costumbre_cod'];
+
+    if($cod){
+
+        // query para encontrar por cod
+        $queryCostumbreByCod = mysqli_query($cnx, "SELECT * FROM costumbre WHERE costumbre_cod = '$cod'");
+        
+        $resultadoQueryByCod  = mysqli_fetch_assoc($queryCostumbreByCod);
+        
+        unlink('./mediaBD/mediaChuquis/costumbres/'.$resultadoQueryByCod['costumbre_foto']);
+
+
+        $queryEliminar = mysqli_query($cnx, "DELETE FROM costumbre WHERE costumbre_cod = '$cod'");
+
+        if($queryEliminar){
+            header('Location:index.php?action=readCostumbres&eliminado=1');
+        }
+    }
+}
 
 ?>
 
@@ -41,7 +63,19 @@ $queryCostumbres = mysqli_query($cnx, "SELECT * FROM costumbre");
                     <td><?php echo $costrumbreNombre; ?></td>
                     <td><?php echo $costrumbreTexto; ?></td>
                     <td><?php echo $costrumbreFecha; ?></td>
-                    <td class="table-btn"><a href="index.php?action=updateCostumbres&costumbreCod=<?php echo $costrumbreCod; ?>" class="table-btn__upd"><i class="fas fa-pen-alt"></i>Actualizar</a><a href="" class="table-btn__del"><i class="fas fa-trash"></i>Eliminar</a></td>
+                    <td class="table-btn">
+                        <a href="index.php?action=updateCostumbres&costumbreCod=<?php echo $costrumbreCod; ?>" class="table-btn__upd"><i class="fas fa-pen-alt"></i>Actualizar</a>
+                        <form action="" method="POST">
+                            <input type="hidden" name="costumbre_cod" value="<?php echo $costrumbreCod; ?>">
+                            <button  class="table-btn__del"><i class="fas fa-trash"></i>Eliminar</button>
+                            <?php
+                                $eliminado = $_GET['eliminado'] ?? null;
+                                if($eliminado === 1):
+                            ?>
+                                <span>Eliminado Correctamente</span>
+                            <?php endif; ?>
+                        </form>
+                    </td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>

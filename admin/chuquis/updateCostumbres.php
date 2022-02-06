@@ -100,7 +100,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl-file"  for="costumbre_foto"><i class="fas fa-image"></i> Imagen</label>
-            <input  class="configuracion-file" type="file" name="costumbre_foto" id="costumbre_foto" >
+            <input  class="configuracion-file" accept="image/*" type="file" name="costumbre_foto" id="costumbre_foto" >
             <img width="200px" src="./mediaBD/mediaChuquis/costumbres/<?php echo $costumbreFoto; ?>" alt="">
 
             <?php if(isset($errores['fotoNoDisponible'])): ?>

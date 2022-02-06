@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       
         
         if($addCostumbre){
-            header('Location: index.php');
+            header('Location: index.php?action=createCostumbres&agregado=1');
         }
     }   
     
@@ -120,7 +120,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <input class="configuracion-submit" type="submit" value="Agregar">
 
         <?php
-            $actualizadoCorrectamente = $_GET['actualizado']  ?? null;
+            $actualizadoCorrectamente = $_GET['agregado']  ?? null;
             if($actualizadoCorrectamente == 1 && empty($errores)):
          ?>
          <span class="success-process">Agregado Correctamente</span>
