@@ -16,20 +16,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $inicio_wsp      =   mysqli_escape_string($cnx, $_POST['inicio_wsp']);
     $inicio_youtube  =   mysqli_escape_string($cnx, $_POST['inicio_youtube']); 
  
-   
-    // var_dump($user_foto);
-    // exit;
-    // if(!$inicio_facebook){
-    //     $errores['facebookVacio'] = 'El link de facebook no debe estar Vacio';
-    // }
 
-    // if(!$inicio_wsp){
-    //     $errores['wspVacio'] = 'El link de Whatsapp no debe estar vacio';
-    // }
-
-    // if(!$inicio_youtube){
-    //     $errores['youtubeVacio'] = 'El link de Youtube no debe estar vacio';
-    // }
 
     if(empty($errores)){
 
@@ -39,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         
         if($updateUser){
-            header('Location: index.php?action=configuracion&actualizado=1');
+            header('Location: index.php?action=redes&actualizado=1');
         }
     }   
     
@@ -49,23 +36,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 <section class="configuracion">
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
-    <h3 class="configuracion-title"> Redes Sociales</h2>
+    <h3 class="configuracion-title"> Redes Sociales</h3>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl"  for="inicio_facebook">Facebook:</label>
+            <label class="configuracion-lbl"  for="inicio_facebook"><i class="fab fa-facebook-square"></i> Facebook:</label>
             <input class="configuracion-input" type="text" value="<?php echo $inicioFacebook; ?>" name="inicio_facebook">
             <?php if(isset($errores['nombreVacio'])):?>
                 <span class="error-process"><?php echo $errores['nombreVacio']; ?></span>
             <?php endif; ?>
         </div>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl"  for="inicio_wsp">Whatsapp:</label>
+            <label class="configuracion-lbl"  for="inicio_wsp"><i class="fab fa-whatsapp"></i> Whatsapp:</label>
             <input class="configuracion-input" type="text" value="<?php echo $inicioWhatsapp; ?>" name="inicio_wsp">
             <?php if(isset($errores['nombreVacio'])):?>
                 <span class="error-process"><?php echo $errores['nombreVacio']; ?></span>
             <?php endif; ?>
         </div>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl"  for="inicio_youtube">Youtube:</label>
+            <label class="configuracion-lbl"  for="inicio_youtube"><i class="fab fa-youtube"></i> Youtube:</label>
             <input class="configuracion-input" type="text" value="<?php echo $inicioYoutube; ?>" name="inicio_youtube">
             <?php if(isset($errores['nombreVacio'])):?>
                 <span class="error-process"><?php echo $errores['nombreVacio']; ?></span>

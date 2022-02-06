@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
         <h3 class="configuracion-title"> Cambiar Welcome & Wallpaper</h2>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl-file"  for="inicio_welcome">Foto Welcome</label>
+            <label class="configuracion-lbl-file"  for="inicio_welcome"><i class="fas fa-image"></i> Foto Welcome</label>
             <input  class="configuracion-file" type="file" accept="image/*" name="inicio_welcome" id="inicio_welcome">
             <?php if(isset($errores['fotoNoDisponible'])): ?>
                 <span class="error-process"><?php echo $errores['fotoNoDisponible']; ?></span>
@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <img width="100px" src="./mediaBD/mediaInicio/<?php echo $inicioWelcome; ?>" alt="">
         </div>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl-file"  for="inicio_wallpaper">VIDEO WALLPAPER INICIO</label>
+            <label class="configuracion-lbl-file"  for="inicio_wallpaper"><i class="fas fa-video"></i> VIDEO WALLPAPER INICIO</label>
             <input  class="configuracion-file" type="file" name="inicio_wallpaper" accept="video/*" id="inicio_wallpaper">
             <span>VIdeo MAXIMO de 40MB</span>
             <?php if(isset($errores['videoNoDisponible'])): ?>
@@ -112,7 +112,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <?php if(isset($errores['videoPesado'])): ?>
                 <span class="error-process"><?php echo $errores['videoPesado']; ?></span>
             <?php  endif;?>
-            <img width="100px" src="./usersImagenes/<?php echo $userFoto; ?>" alt="">
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

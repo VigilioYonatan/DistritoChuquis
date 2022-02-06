@@ -40,7 +40,7 @@ if($userQuery -> num_rows){
       <div class="settings">
         <div class="settings-links">
           <div class="links-image">
-            <a href=""><img src="./mediaBD/mediaUsers/<?php echo $userFoto; ?>" alt=""></a>
+            <a href="#"><img src="./mediaBD/mediaUsers/<?php echo $userFoto; ?>" alt=""></a>
             <span><?php echo $userNombre; ?></span>
           </div>
           <section class="links-link">
@@ -51,7 +51,7 @@ if($userQuery -> num_rows){
             </div>
             <div class="link">
               <span class="link-title">Distrito Chuquis</span>
-              <a href="">Inicio Wallpaper</a>
+              <a href="index.php?action=readCostumbres">Costumbres</a>
               <a href="">Inicio Wallpaper</a>
               <a href="">Inicio Wallpaper</a>
             </div>
@@ -107,6 +107,23 @@ if($userQuery -> num_rows){
         case 'redes':
           require_once 'inicio/redes.php';
           break;
+
+          // chuquis-costumbres
+        case 'createCostumbres':
+          require_once 'chuquis/createCostumbres.php';
+          break;
+          
+        case 'readCostumbres':
+          require_once 'chuquis/readCostumbres.php';
+          break;
+
+        case 'updateCostumbres':
+          require_once 'chuquis/updateCostumbres.php';
+          break;
+
+        case 'updCostumbres':
+          require_once 'chuquis/updCostumbres.php';
+          break;
         
         default:
           # code...
@@ -117,5 +134,6 @@ if($userQuery -> num_rows){
 
       </div>
     </div>
+    <script src="../build/js/bundle.min.js"></script>
   </body>
 </html>

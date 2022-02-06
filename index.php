@@ -1,9 +1,8 @@
 
    
 <?php require_once './includes/header.php';
-require_once './includes/db.php';
 
-session_start();
+
 
 //query INicio
 $queryInicio = mysqli_query($cnx, "SELECT * FROM inicio");

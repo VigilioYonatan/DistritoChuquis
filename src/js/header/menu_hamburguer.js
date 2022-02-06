@@ -3,11 +3,15 @@ const navbarMenu = document.querySelector('.navbar-menu');
 const navbarSearch = document.querySelector('.navbar-search');
 const distritoChuquis = document.querySelector('#distritoChuquis');
 const distritoChuquisMenu = document.querySelector('.navbar-menu-list-submenu');
+
+if(menuHamburguer){
 menuHamburguer.addEventListener('click', ()=>{
     navbarMenu.classList.toggle('navbar-menu-actived');
     navbarSearch.classList.toggle('navbar-search-actived');
 })
+}
 
+if(distritoChuquis){
 distritoChuquis.addEventListener('click', ()=>{
 
  
@@ -19,7 +23,7 @@ distritoChuquis.addEventListener('click', ()=>{
         distritoChuquisMenu.style.display = 'none';  
     }
 })
-
+}
 // distritoChuquis.addEventListener('mouseover', ()=>{
 //     
     

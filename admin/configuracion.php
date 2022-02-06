@@ -81,29 +81,29 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <section class="configuracion">
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
         <div class="configuracion-inp">
-            <label class="configuracion-lbl"  for="">Código:</label>
+            <label class="configuracion-lbl"  for=""><i class="fas fa-key"></i> Código:</label>
             <span class="configuracion-info"><?php echo $userCod ?></span>
         </div>
         <div class="configuracion-inp">
-            <label class="configuracion-lbl"  for="user_nombre">Nombre:</label>
+            <label class="configuracion-lbl"  for="user_nombre"><i class="fas fa-user"></i> Nombre:</label>
             <input class="configuracion-input" type="text" value="<?php echo $userNombre; ?>" name="user_name">
             <?php if(isset($errores['nombreVacio'])):?>
                 <span class="error-process"><?php echo $errores['nombreVacio']; ?></span>
             <?php endif; ?>
         </div>
         <div class="configuracion-inp">
-            <label class="configuracion-lbl"  for="user_apellido">Apellido</label>
+            <label class="configuracion-lbl"  for="user_apellido"><i class="fas fa-people-arrows"></i> Apellido</label>
             <input class="configuracion-input" type="text" value="<?php echo $userApellido; ?>" name="user_apellido">
             <?php if(isset($errores['apellidoVacio'])):?>
                 <span class="error-process"><?php echo $errores['apellidoVacio']; ?></span>
             <?php endif; ?>
         </div>
         <div class="configuracion-inp">
-            <label class="configuracion-lbl"  for="">Correo Electrónico:</label>
+            <label class="configuracion-lbl"  for=""><i class="fas fa-envelope"></i> Correo Electrónico:</label>
             <span class="configuracion-info"><?php echo $userCorreo ?></span>
         </div>
         <div class="configuracion-inp">
-            <label class="configuracion-lbl"  for="user_fecha">Creado el:</label>
+            <label class="configuracion-lbl"  for="user_fecha"><i class="fas fa-table"></i> Creado el:</label>
             <span class="configuracion-info"><?php echo $userFecha ?></span>
         </div>
         <div class="configuracion-inp">
@@ -114,7 +114,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <?php endif; ?>
         </div>
         <div class="configuracion-inp-foto">
-            <label class="configuracion-lbl-file"  for="user_foto">Foto de Perfil</label>
+            <label class="configuracion-lbl-file"  for="user_foto"><i class="fas fa-image"></i> Foto de Perfil</label>
             <input  class="configuracion-file" type="file" name="user_foto" id="user_foto">
             <?php if(isset($errores['fotoNoDisponible'])): ?>
                 <span class="error-process"><?php echo $errores['fotoNoDisponible']; ?></span>

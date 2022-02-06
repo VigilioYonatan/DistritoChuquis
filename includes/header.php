@@ -1,3 +1,6 @@
+<?php require_once './includes/db.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +25,7 @@
                 <li class="navbar-menu-list"><a class="navbar-menu-list__link" href="">Inicio</a></li>
                 <li class="navbar-menu-list navbar-menu-list-linked" id="distritoChuquis"><span class="navbar-menu-list__link" href="">Distrito de Chuquis</span>
                     <ul class="navbar-menu-list-submenu">
-                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuqis.html">Costumbres</a></li>
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuquis.php?action=costumbres">Costumbres</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Flora</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Fauna</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="#">Turísmo</a></li>
