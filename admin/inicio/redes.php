@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         
-        $updateUser  = mysqli_query($cnx, "UPDATE users SET user_nombre = '$user_nombre', user_apellido = '$user_apellido', user_foto = '$nombreImagen', user_clave = '$user_clave' WHERE user_Cod = '$userCod' "); //$userCod hereda de index.php
+        $updateUser  = mysqli_query($cnx, "UPDATE inicio SET inicio_facebook = '$inicio_facebook', inicio_whatsapp = '$inicio_wsp', inicio_youtube = '$inicio_youtube'"); //$userCod hereda de index.php
 
         
         if($updateUser){

@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/db.php';
+require_once './funciones.php';
 
 session_start();
 
@@ -52,8 +53,9 @@ if($userQuery -> num_rows){
             <div class="link">
               <span class="link-title">Distrito Chuquis</span>
               <a href="index.php?action=readCostumbres">Costumbres</a>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
+              <a href="index.php?action=readFlora">Flora</a>
+              <a href="index.php?action=readFauna">Fauna</a>
+              <a href="index.php?action=readTurismo">Turismo</a>
             </div>
             <div class="link">
               <span class="link-title">Tingo Maria</span>
@@ -89,6 +91,7 @@ if($userQuery -> num_rows){
       </div>
       <div class="crud">
 
+      <!-- controlador -->
       <?php
       if(isset($_GET['action'])){
         $action = $_GET['action'];
@@ -110,19 +113,70 @@ if($userQuery -> num_rows){
 
           // chuquis-costumbres
         case 'createCostumbres':
-          require_once 'chuquis/createCostumbres.php';
+          require_once 'chuquis/costumbres/createCostumbres.php';
           break;
           
         case 'readCostumbres':
-          require_once 'chuquis/readCostumbres.php';
+          require_once 'chuquis/costumbres/readCostumbres.php';
           break;
 
         case 'updateCostumbres':
-          require_once 'chuquis/updateCostumbres.php';
+          require_once 'chuquis/costumbres/updateCostumbres.php';
           break;
 
         case 'updCostumbres':
-          require_once 'chuquis/updCostumbres.php';
+          require_once 'chuquis/flora/updFlora.php';
+          break;
+
+          // chuquis-flora
+        case 'createFlora':
+          require_once 'chuquis/flora/createFlora.php';
+          break;
+          
+        case 'readFlora':
+          require_once 'chuquis/flora/readFlora.php';
+          break;
+
+        case 'updateFlora':
+          require_once 'chuquis/flora/updateFlora.php';
+          break;
+
+        case 'updFlora':
+          require_once 'chuquis/flora/updFlora.php';
+          break;
+
+          // chuquis-fauna
+        case 'createFauna':
+          require_once 'chuquis/fauna/createFauna.php';
+          break;
+          
+        case 'readFauna':
+          require_once 'chuquis/fauna/readFauna.php';
+          break;
+
+        case 'updateFauna':
+          require_once 'chuquis/fauna/updateFauna.php';
+          break;
+
+        case 'updFauna':
+          require_once 'chuquis/fauna/updFauna.php';
+          break;
+        
+          // chuquis-turismo
+        case 'createTurismo':
+          require_once 'chuquis/turismo/createTurismo.php';
+          break;
+          
+        case 'readTurismo':
+          require_once 'chuquis/turismo/readTurismo.php';
+          break;
+
+        case 'updateTurismo':
+          require_once 'chuquis/turismo/updateTurismo.php';
+          break;
+
+        case 'updTurismo':
+          require_once 'chuquis/turismo/updTurismo.php';
           break;
         
         default:
