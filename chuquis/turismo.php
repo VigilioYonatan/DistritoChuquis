@@ -72,7 +72,7 @@
 <?php endif; ?>
 <!-- fin wallpaper -->
 <!-- card -->
-<section class="<?php echo $_GET['pagina'] >= 2 ? 'borrarPadding' : 'album-container '; ?>">
+<section class="<?php echo isset($_GET['pagina']) >= 2 ? 'borrarPadding' : 'album-container '; ?>">
     <h2 class="album__title">Turismo</h2>
     <div class="album">
     <?php 

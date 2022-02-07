@@ -56,6 +56,9 @@ if($userQuery -> num_rows){
               <a href="index.php?action=readFlora">Flora</a>
               <a href="index.php?action=readFauna">Fauna</a>
               <a href="index.php?action=readTurismo">Turismo</a>
+              <a href="index.php?action=readCaserio">Caserios</a>
+              <a href="index.php?action=readGeografia">Geografía</a>
+              <a href="index.php?action=readCarnavales">Carnavales</a>
             </div>
             <div class="link">
               <span class="link-title">Tingo Maria</span>
@@ -177,6 +180,57 @@ if($userQuery -> num_rows){
 
         case 'updTurismo':
           require_once 'chuquis/turismo/updTurismo.php';
+          break;
+
+          // chuquis-caserio
+        case 'createCaserio':
+          require_once 'chuquis/caserio/createCaserio.php';
+          break;
+          
+        case 'readCaserio':
+          require_once 'chuquis/caserio/readCaserio.php';
+          break;
+
+        case 'updateCaserio':
+          require_once 'chuquis/caserio/updateCaserio.php';
+          break;
+
+        case 'updCaserio':
+          require_once 'chuquis/caserio/updCaserio.php';
+          break;
+
+          // chuquis-geografia
+        case 'createGeografia':
+          require_once 'chuquis/geografia/createGeografia.php';
+          break;
+          
+        case 'readGeografia':
+          require_once 'chuquis/geografia/readGeografia.php';
+          break;
+
+        case 'updateGeografia':
+          require_once 'chuquis/geografia/updateGeografia.php';
+          break;
+
+        case 'updGeografia':
+          require_once 'chuquis/geografia/updGeografia.php';
+          break;
+
+          // chuquis-carnavales
+        case 'createCarnavales':
+          require_once 'chuquis/carnavales/createCarnavales.php';
+          break;
+          
+        case 'readCarnavales':
+          require_once 'chuquis/carnavales/readCarnavales.php';
+          break;
+
+        case 'updateCarnavales':
+          require_once 'chuquis/carnavales/updateCarnavales.php';
+          break;
+
+        case 'updCarnavales':
+          require_once 'chuquis/carnavales/updCarnavales.php';
           break;
         
         default:
