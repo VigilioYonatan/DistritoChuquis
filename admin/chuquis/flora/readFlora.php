@@ -2,7 +2,7 @@
 
 
 //traer datos de costumbres
-$queryFlora = mysqli_query($cnx, "SELECT * FROM flora ORDER BY flora_id DESC");
+$queryFlora = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-FLO' ORDER BY id DESC");
 
 //eliminar flora por id
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -10,13 +10,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($cod){
         // query para encontrar por cod
-        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM flora WHERE flora_cod = '$cod'");
+        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$cod'");
         $resultadoQueryByCod  = mysqli_fetch_assoc($queryfloraByCod);
         
-        unlink('./mediaBD/mediaChuquis/flora/'.$resultadoQueryByCod['flora_foto']);
+        unlink('./mediaBD/mediaChuquis/flora/'.$resultadoQueryByCod['foto']);
 
 
-        $queryEliminar = mysqli_query($cnx, "DELETE FROM flora WHERE flora_cod = '$cod'");
+        $queryEliminar = mysqli_query($cnx, "DELETE FROM chuquis_tables WHERE cod = '$cod'");
 
         if($queryEliminar){
             header('Location:index.php?action=readFlora&eliminado=1');
@@ -46,19 +46,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryFlora;
-             $tabla = [
-                'cod'       => 'flora_cod',
-                'nombre'    => 'flora_nombre',
-                'texto'     => 'flora_texto',
-                'foto'      => 'flora_foto',
-                'fecha'     => 'flora_fecha',
-             ];
-
              $ruta = 'flora';
              $rutaActualizar = 'updateFlora&floraCod';
              $eliminar = 'flora_cod';
                 // imprime tabla
-                readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar)
+                readChuquis($query,$ruta,$rutaActualizar,$eliminar)
              ?>
                     
             </tbody>

@@ -1,6 +1,6 @@
 <?php
     //paginador
-    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM turismo" );
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM chuquis_tables WHERE ChuquisCod = 'CHU-TUR'" );
     $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
 
     $total = $resultadoPaginador['total'];
@@ -22,7 +22,7 @@
 
     $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
     // //imagenes costumbre
-    $queryturismo = mysqli_query($cnx, "SELECT * FROM turismo ORDER BY turismo_id DESC LIMIT $desde,$por_pagina");
+    $queryturismo = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-TUR' ORDER BY id DESC LIMIT $desde,$por_pagina");
 
     // wallpaper costumbres
     $turismo = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-TUR'");
@@ -80,16 +80,9 @@
     <h2 class="album__title">Turismo</h2>
     <div class="album">
     <?php 
-    $tabla =[
-        'nombre' => 'turismo_nombre',
-        'texto'  => 'turismo_texto',
-        'foto'   => 'turismo_foto',
-        'fecha'  => 'turismo_fecha'
-    ];
-
     $ruta = 'turismo';
 
-    listChuquis($queryturismo, $tabla, $ruta);
+    listChuquis($queryturismo, $ruta);
     ?>
     </div>
 </section>

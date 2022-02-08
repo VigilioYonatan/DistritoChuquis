@@ -4,13 +4,13 @@ $geografiaCod = $_GET['geografiaCod'];
 $errores = [];
 
 
-$querygeografia = mysqli_query($cnx, "SELECT * FROM geografia WHERE geografia_cod = '$geografiaCod'");
+$querygeografia = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$geografiaCod'");
 $resultadoQuery = mysqli_fetch_assoc($querygeografia);
 
-$geografiaNombre    = $resultadoQuery['geografia_nombre'];
-$geografiaTexto     = $resultadoQuery['geografia_texto'];
-$geografiaFoto      = $resultadoQuery['geografia_foto'];
-$geografiaFecha     = $resultadoQuery['geografia_fecha'];
+$geografiaNombre    = $resultadoQuery['nombre'];
+$geografiaTexto     = $resultadoQuery['texto'];
+$geografiaFoto      = $resultadoQuery['foto'];
+$geografiaFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updgeografia  = mysqli_query($cnx, "UPDATE geografia SET geografia_nombre = '$geografia_Nombre', geografia_texto ='$geografia_Texto', geografia_foto = '$nombreImagen' WHERE geografia_cod = '$geografiaCod'"); //$userCod hereda de index.php
+        $updgeografia  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$geografia_Nombre', texto ='$geografia_Texto', foto = '$nombreImagen' WHERE cod = '$geografiaCod'"); //$userCod hereda de index.php
       
         
         if($updgeografia){

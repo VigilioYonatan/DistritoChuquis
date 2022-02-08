@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $codigoFlora = date('Y'.'m'.'d'.'s');
         $fechaFlora = date('Y/m/d');
 
-        $addFlora  = mysqli_query($cnx, "INSERT INTO flora (flora_cod, flora_nombre, flora_texto, flora_foto,flora_fecha, flora_ChuquisCod) VALUES ('$codigoFlora','$floraNombre','$floraTexto', '$nombreImagen','$fechaFlora', '$chuquisCod')");
+        $addFlora  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoFlora','$floraNombre','$floraTexto', '$nombreImagen','$fechaFlora', '$chuquisCod')");
       
         
         if($addFlora){

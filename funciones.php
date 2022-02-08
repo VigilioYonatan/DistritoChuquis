@@ -1,12 +1,12 @@
 <!-- funciones -->
 <?php 
 //lista de imagenes chuquis
-function listChuquis($query, $tabla,$ruta){
+function listChuquis($query,$ruta){
     while($row = mysqli_fetch_assoc($query)):
-        $nombre    = $row[ $tabla['nombre'] ];
-        $texto = $row[ $tabla['texto'] ];
-        $foto  = $row[ $tabla['foto'] ];
-        $fecha   = $row[ $tabla['fecha'] ];
+        $nombre     = $row[ 'nombre' ];
+        $texto      = $row[ 'texto' ];
+        $foto       = $row[ 'foto' ];
+        $fecha      = $row[ 'fecha' ];
 
         echo    "<picture class='album-card animation-initial-showUp'>
                     <img class='album-card__img' src='./admin/mediaBD/mediaChuquis/$ruta/$foto' alt='$nombre' title='$nombre'>

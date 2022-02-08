@@ -16,7 +16,7 @@ session_start();
     <header class="header">
         <!-- navbar -->
         <nav class="navbar">
-            <a href="" class="navbar-logo"><img class="navbar-logo__img" src="./build/img/logo.webp" alt=""></a>
+            <a href="index.php" class="navbar-logo"><img class="navbar-logo__img" src="./build/img/logo.webp" alt=""></a>
             <form class="navbar-search" method="GET" action="search.php">
                 <input class="navbar-search__input" type="text" placeholder="Buscar" name="search_text">
                 <button><i  class="fas fa-search navbar-search__ico "></i></button>

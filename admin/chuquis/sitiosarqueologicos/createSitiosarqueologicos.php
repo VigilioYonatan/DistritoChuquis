@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $codigoSitiosarqueologicos = date('Y'.'m'.'d'.'s');
         $fechaSitiosarqueologicos = date('Y/m/d');
 
-        $addSitiosarqueologicos  = mysqli_query($cnx, "INSERT INTO sitiosarqueologicos (sitiosarqueologicos_cod, sitiosarqueologicos_nombre, sitiosarqueologicos_texto, sitiosarqueologicos_foto,sitiosarqueologicos_fecha, sitiosarqueologicos_ChuquisCod) VALUES ('$codigoSitiosarqueologicos','$sitiosarqueologicosNombre','$sitiosarqueologicosTexto', '$nombreImagen','$fechaSitiosarqueologicos', '$chuquisCod')");
+        $addSitiosarqueologicos  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoSitiosarqueologicos','$sitiosarqueologicosNombre','$sitiosarqueologicosTexto', '$nombreImagen','$fechaSitiosarqueologicos', '$chuquisCod')");
       var_dump($addSitiosarqueologicos);
         
         if($addSitiosarqueologicos){

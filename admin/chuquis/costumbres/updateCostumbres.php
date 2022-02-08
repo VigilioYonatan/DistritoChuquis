@@ -4,13 +4,13 @@ $costumbresCod = $_GET['CostumbreCod'];
 $errores = [];
 
 
-$querycostumbres = mysqli_query($cnx, "SELECT * FROM costumbre WHERE costumbre_cod = '$costumbresCod'");
+$querycostumbres = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$costumbresCod'");
 $resultadoQuery = mysqli_fetch_assoc($querycostumbres);
 
-$costumbresNombre    = $resultadoQuery['costumbre_nombre'];
-$costumbresTexto     = $resultadoQuery['costumbre_texto'];
-$costumbresFoto      = $resultadoQuery['costumbre_foto'];
-$costumbresFecha     = $resultadoQuery['costumbre_fecha'];
+$costumbresNombre    = $resultadoQuery['nombre'];
+$costumbresTexto     = $resultadoQuery['texto'];
+$costumbresFoto      = $resultadoQuery['foto'];
+$costumbresFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updcostumbres  = mysqli_query($cnx, "UPDATE costumbre SET costumbre_nombre = '$costumbres_Nombre', costumbre_texto ='$costumbres_Texto', costumbre_foto = '$nombreImagen' WHERE costumbre_cod = '$costumbresCod'"); //$userCod hereda de index.php
+        $updcostumbres  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$costumbres_Nombre', texto ='$costumbres_Texto', foto = '$nombreImagen' WHERE cod = '$costumbresCod'"); //$userCod hereda de index.php
       
         
         if($updcostumbres){

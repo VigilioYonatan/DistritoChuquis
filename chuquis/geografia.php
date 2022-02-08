@@ -1,6 +1,6 @@
 <?php
     //paginador
-    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM geografia" );
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM chuquis_tables WHERE ChuquisCod = 'CHU-GEO'" );
     $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
 
     $total = $resultadoPaginador['total'];
@@ -22,7 +22,7 @@
 
     $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
     // //imagenes costumbre
-    $querygeografia = mysqli_query($cnx, "SELECT * FROM geografia ORDER BY geografia_id DESC LIMIT $desde,$por_pagina");
+    $querygeografia = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-GEO' ORDER BY id DESC LIMIT $desde,$por_pagina");
 
     // wallpaper costumbres
     $geografia = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-GEO'");
@@ -80,16 +80,9 @@
     <h2 class="album__title">Geografía</h2>
     <div class="album">
     <?php 
-    $tabla =[
-        'nombre' => 'geografia_nombre',
-        'texto'  => 'geografia_texto',
-        'foto'   => 'geografia_foto',
-        'fecha'  => 'geografia_fecha'
-    ];
-
     $ruta = 'geografia';
 
-    listChuquis($querygeografia, $tabla, $ruta);
+    listChuquis($querygeografia, $ruta);
     ?>
     </div>
 </section>

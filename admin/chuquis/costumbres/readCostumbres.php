@@ -2,7 +2,7 @@
 
 
 //traer datos de Costumbre
-$queryCostumbre = mysqli_query($cnx, "SELECT * FROM costumbre ORDER BY costumbre_id DESC");
+$queryCostumbre = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-COS' ORDER BY id DESC");
 
 //eliminar flora por id
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -10,13 +10,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($cod){
         // query para encontrar por cod
-        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM costumbre WHERE costumbre_cod = '$cod'");
+        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$cod'");
         $resultadoQueryByCod  = mysqli_fetch_assoc($queryfloraByCod);
         
-        unlink('./mediaBD/mediaChuquis/costumbres/'.$resultadoQueryByCod['costumbre_foto']);
+        unlink('./mediaBD/mediaChuquis/costumbres/'.$resultadoQueryByCod['foto']);
 
 
-        $queryEliminar = mysqli_query($cnx, "DELETE FROM costumbre WHERE costumbre_cod = '$cod'");
+        $queryEliminar = mysqli_query($cnx, "DELETE FROM chuquis_tables WHERE cod = '$cod'");
 
         if($queryEliminar){
             header('Location:index.php?action=readCostumbres&eliminado=1');
@@ -46,19 +46,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryCostumbre;
-             $tabla = [
-                'cod'       => 'costumbre_cod',
-                'nombre'    => 'costumbre_nombre',
-                'texto'     => 'costumbre_texto',
-                'foto'      => 'costumbre_foto',
-                'fecha'     => 'costumbre_fecha',
-             ];
-
              $ruta = 'costumbres';
              $rutaActualizar = 'updateCostumbres&CostumbreCod';
              $eliminar = 'costumbre_cod';
                 // imprime tabla
-                readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar)
+                readChuquis($query,$ruta,$rutaActualizar,$eliminar)
              ?>
                     
             </tbody>

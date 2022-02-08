@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $codigoCostumbres = date('Y'.'m'.'d'.'s');
         $fechaCostumbres = date('Y/m/d');
 
-        $addCostumbres  = mysqli_query($cnx, "INSERT INTO costumbre (costumbre_cod, costumbre_nombre, costumbre_texto, costumbre_foto,costumbre_fecha, costumbre_ChuquisCod) VALUES ('$codigoCostumbres','$costumbresNombre','$costumbresTexto', '$nombreImagen','$fechaCostumbres', '$chuquisCod')");
+        $addCostumbres  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoCostumbres','$costumbresNombre','$costumbresTexto', '$nombreImagen','$fechaCostumbres', '$chuquisCod')");
       
         
         if($addCostumbres){

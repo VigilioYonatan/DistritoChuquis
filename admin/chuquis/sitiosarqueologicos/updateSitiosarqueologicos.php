@@ -4,13 +4,13 @@ $sitiosarqueologicosCod = $_GET['sitiosarqueologicosCod'];
 $errores = [];
 
 
-$querysitiosarqueologicos = mysqli_query($cnx, "SELECT * FROM sitiosarqueologicos WHERE sitiosarqueologicos_cod = '$sitiosarqueologicosCod'");
+$querysitiosarqueologicos = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$sitiosarqueologicosCod'");
 $resultadoQuery = mysqli_fetch_assoc($querysitiosarqueologicos);
 
-$sitiosarqueologicosNombre    = $resultadoQuery['sitiosarqueologicos_nombre'];
-$sitiosarqueologicosTexto     = $resultadoQuery['sitiosarqueologicos_texto'];
-$sitiosarqueologicosFoto      = $resultadoQuery['sitiosarqueologicos_foto'];
-$sitiosarqueologicosFecha     = $resultadoQuery['sitiosarqueologicos_fecha'];
+$sitiosarqueologicosNombre    = $resultadoQuery['nombre'];
+$sitiosarqueologicosTexto     = $resultadoQuery['texto'];
+$sitiosarqueologicosFoto      = $resultadoQuery['foto'];
+$sitiosarqueologicosFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updsitiosarqueologicos  = mysqli_query($cnx, "UPDATE sitiosarqueologicos SET sitiosarqueologicos_nombre = '$sitiosarqueologicos_Nombre', sitiosarqueologicos_texto ='$sitiosarqueologicos_Texto', sitiosarqueologicos_foto = '$nombreImagen' WHERE sitiosarqueologicos_cod = '$sitiosarqueologicosCod'"); //$userCod hereda de index.php
+        $updsitiosarqueologicos  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$sitiosarqueologicos_Nombre', texto ='$sitiosarqueologicos_Texto', foto = '$nombreImagen' WHERE cod = '$sitiosarqueologicosCod'"); //$userCod hereda de index.php
       
         
         if($updsitiosarqueologicos){

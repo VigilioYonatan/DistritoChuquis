@@ -1,6 +1,6 @@
 <?php
     //paginador
-    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM caserio" );
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM chuquis_tables WHERE ChuquisCod = 'CHU-CAS'" );
     $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
 
     $total = $resultadoPaginador['total'];
@@ -21,7 +21,7 @@
 
     $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
     // //imagenes costumbre
-    $querycaserio = mysqli_query($cnx, "SELECT * FROM caserio ORDER BY caserio_id DESC LIMIT $desde,$por_pagina");
+    $querycaserio = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-CAS' ORDER BY id DESC LIMIT $desde,$por_pagina");
 
     // wallpaper costumbres
     $caserio = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-CAS'");
@@ -79,16 +79,9 @@
     <h2 class="album__title">Caserios</h2>
     <div class="album">
     <?php 
-    $tabla =[
-        'nombre' => 'caserio_nombre',
-        'texto'  => 'caserio_texto',
-        'foto'   => 'caserio_foto',
-        'fecha'  => 'caserio_fecha'
-    ];
-
     $ruta = 'caserio';
 
-    listChuquis($querycaserio, $tabla, $ruta);
+    listChuquis($querycaserio, $ruta);
     ?>
     </div>
 </section>

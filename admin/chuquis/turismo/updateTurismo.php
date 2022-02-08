@@ -4,13 +4,13 @@ $turismoCod = $_GET['turismoCod'];
 $errores = [];
 
 
-$queryturismo = mysqli_query($cnx, "SELECT * FROM turismo WHERE turismo_cod = '$turismoCod'");
+$queryturismo = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$turismoCod'");
 $resultadoQuery = mysqli_fetch_assoc($queryturismo);
 
-$turismoNombre    = $resultadoQuery['turismo_nombre'];
-$turismoTexto     = $resultadoQuery['turismo_texto'];
-$turismoFoto      = $resultadoQuery['turismo_foto'];
-$turismoFecha     = $resultadoQuery['turismo_fecha'];
+$turismoNombre    = $resultadoQuery['nombre'];
+$turismoTexto     = $resultadoQuery['texto'];
+$turismoFoto      = $resultadoQuery['foto'];
+$turismoFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updturismo  = mysqli_query($cnx, "UPDATE turismo SET turismo_nombre = '$turismo_Nombre', turismo_texto ='$turismo_Texto', turismo_foto = '$nombreImagen' WHERE turismo_cod = '$turismoCod'"); //$userCod hereda de index.php
+        $updturismo  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$turismo_Nombre', texto ='$turismo_Texto', foto = '$nombreImagen' WHERE cod = '$turismoCod'"); //$userCod hereda de index.php
       
         
         if($updturismo){

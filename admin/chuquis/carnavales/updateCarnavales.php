@@ -4,13 +4,13 @@ $carnavalesCod = $_GET['carnavalesCod'];
 $errores = [];
 
 
-$querycarnavales = mysqli_query($cnx, "SELECT * FROM carnavales WHERE carnavales_cod = '$carnavalesCod'");
+$querycarnavales = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$carnavalesCod'");
 $resultadoQuery = mysqli_fetch_assoc($querycarnavales);
 
-$carnavalesNombre    = $resultadoQuery['carnavales_nombre'];
-$carnavalesTexto     = $resultadoQuery['carnavales_texto'];
-$carnavalesFoto      = $resultadoQuery['carnavales_foto'];
-$carnavalesFecha     = $resultadoQuery['carnavales_fecha'];
+$carnavalesNombre    = $resultadoQuery['nombre'];
+$carnavalesTexto     = $resultadoQuery['texto'];
+$carnavalesFoto      = $resultadoQuery['foto'];
+$carnavalesFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updcarnavales  = mysqli_query($cnx, "UPDATE carnavales SET carnavales_nombre = '$carnavales_Nombre', carnavales_texto ='$carnavales_Texto', carnavales_foto = '$nombreImagen' WHERE carnavales_cod = '$carnavalesCod'"); 
+        $updcarnavales  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$carnavales_Nombre', texto ='$carnavales_Texto', foto = '$nombreImagen' WHERE cod = '$carnavalesCod'"); 
       
         
         if($updcarnavales){

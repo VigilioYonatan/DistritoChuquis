@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $codigoCarnavales = date('Y'.'m'.'d'.'s');
         $fechaCarnavales = date('Y/m/d');
 
-        $addCarnavales  = mysqli_query($cnx, "INSERT INTO carnavales (carnavales_cod, carnavales_nombre, carnavales_texto, carnavales_foto,carnavales_fecha, carnavales_ChuquisCod) VALUES ('$codigoCarnavales','$carnavalesNombre','$carnavalesTexto', '$nombreImagen','$fechaCarnavales', '$chuquisCod')");
+        $addCarnavales  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod) VALUES ('$codigoCarnavales','$carnavalesNombre','$carnavalesTexto', '$nombreImagen','$fechaCarnavales', '$chuquisCod')");
       var_dump($addCarnavales);
         
         if($addCarnavales){

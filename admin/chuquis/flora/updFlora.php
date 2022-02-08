@@ -7,13 +7,15 @@ $resultadoQuery = mysqli_fetch_assoc($queryFlora);
 
 $floraFoto = $resultadoQuery['chuquis_foto'];
 $floraVideo = $resultadoQuery['chuquis_video'];
+$floraTexto= $resultadoQuery['chuquis_texto'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $flora_welcome =    $_FILES['flora_welcome'];
     $flora_wallpaper =    $_FILES['flora_wallpaper'];
+    $flora_texto =    $_POST['flora_texto'];
   
-    $errores = validarFormularioWelcome($errores,$flora_welcome, $flora_wallpaper );
+    $errores = validarFormularioWelcome($errores,$flora_welcome, $flora_wallpaper, $flora_texto );
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nombreVideo = $floraVideo;
         }
       
-        $updateflora = mysqli_query($cnx, "UPDATE chuquis SET chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-FLO'"); 
+        $updateflora = mysqli_query($cnx, "UPDATE chuquis SET chuquis_texto = '$flora_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-FLO'"); 
 
         if($updateflora){
             header('Location: index.php?action=updFlora&actualizado=1');
@@ -80,6 +82,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <span>VIdeo MAXIMO de 40MB</span>
             <?php echo isset($errores['videoNoDisponible']) ? "<span class='error-process'>$errores[videoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['videoPesado']) ? "<span class='error-process'>$errores[videoPesado]</span>" : '' ?>
+        </div>
+        <div class="configuracion-inp center">
+            <label class="configuracion-lbl" for="flora_texto"> Texto de Flora</label>
+            <textarea name="flora_texto" id="" cols="20" rows="5"><?php echo $floraTexto; ?></textarea>
+            <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '' ?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

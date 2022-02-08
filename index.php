@@ -14,6 +14,12 @@ $inicioFacebook = $resultadoQuery['inicio_facebook'];
 $inicioWhatsapp = $resultadoQuery['inicio_whatsapp'];
 $inicioYoutube = $resultadoQuery['inicio_youtube'];
 
+
+// query chuquis
+
+$queryChuquis = mysqli_query($cnx, "SELECT * FROM chuquis");
+
+
 ?>
    <!-- wallpaper -->
     <section class="container-wallpaper" id="welcome">
@@ -125,16 +131,22 @@ $inicioYoutube = $resultadoQuery['inicio_youtube'];
             <div class="carousel__contenedor" >
 
 				<div id="glider" class="carousel__lista">
+                    <?php while ($row = mysqli_fetch_assoc($queryChuquis)):
+                        $fotoChuquis = $row['chuquis_foto'];     
+                        $nombreChuquis = $row['chuquis_nombre'];     
+                        $textoChuquis = $row['chuquis_texto'];     
+                        $videoChuquis = $row['chuquis_video'];     
+                        $urlChuquis = $row['chuquis_url'];     
+                    ?>
 					<div class="carousel__elemento">
-						<img src="./build/img/paisaje1.webp" alt="Rock and Roll Hall of Fame">
+						<img src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $fotoChuquis; ?>" alt="<?php echo $nombreChuquis; ?>" title="<?php echo $nombreChuquis; ?>" >
 						<article class="carousel__parrafo">
-                            <span class="carousel__title">Geografia</span>
-                            <p class="carousel__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, quisquam? Eligendi asperiores voluptas </p>
-                            <a href="#" class="carousel__link">Ver Más</a>
+                            <span class="carousel__title"><?php echo $nombreChuquis; ?></span>
+                            <p class="carousel__text"><?php echo $textoChuquis; ?></p>
+                            <a href="chuquis.php?action=<?php echo $urlChuquis; ?>" class="carousel__link">Ver Más</a>
                         </article>
 					</div>
-					
-					
+                    <?php endwhile; ?>
 				</div>
 				<button aria-label="Anterior" class="carousel__anterior"><svg class="btn__left" viewBox="0 0 512 512"><path  d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm27.5-379.5l-123 123c-4.7 4.7-4.7 12.3 0 17l123 123c7.6 7.6 20.5 2.2 20.5-8.5V133c0-10.7-12.9-16.1-20.5-8.5z" class=""></path></svg></button>
 

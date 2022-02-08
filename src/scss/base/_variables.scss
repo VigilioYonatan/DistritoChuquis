@@ -34,8 +34,8 @@ $medium: 'InterM';
 $bold: 'InterB';
 
 
-@mixin hover {
-    @media (hover:hover) {
+@mixin mxhover{
+    @media (hover:hover)  {
         @content;
     }
 }

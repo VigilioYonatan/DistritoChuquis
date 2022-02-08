@@ -2,7 +2,7 @@
 
 
 //traer datos de costumbres
-$queryCaserio = mysqli_query($cnx, "SELECT * FROM caserio ORDER BY caserio_id DESC");
+$queryCaserio = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-CAS' ORDER BY id DESC");
 
 //eliminar flora por id
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -10,13 +10,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($cod){
         // query para encontrar por cod
-        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM caserio WHERE caserio_cod = '$cod'");
+        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$cod'");
         $resultadoQueryByCod  = mysqli_fetch_assoc($queryfloraByCod);
         
-        unlink('./mediaBD/mediaChuquis/caserio/'.$resultadoQueryByCod['caserio_foto']);
+        unlink('./mediaBD/mediaChuquis/caserio/'.$resultadoQueryByCod['foto']);
 
 
-        $queryEliminar = mysqli_query($cnx, "DELETE FROM caserio WHERE caserio_cod = '$cod'");
+        $queryEliminar = mysqli_query($cnx, "DELETE FROM chuquis_tables WHERE cod = '$cod'");
 
         if($queryEliminar){
             header('Location:index.php?action=readCaserio&eliminado=1');
@@ -46,19 +46,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryCaserio;
-             $tabla = [
-                'cod'       => 'caserio_cod',
-                'nombre'    => 'caserio_nombre',
-                'texto'     => 'caserio_texto',
-                'foto'      => 'caserio_foto',
-                'fecha'     => 'caserio_fecha',
-             ];
-
              $ruta = 'caserio';
              $rutaActualizar = 'updateCaserio&caserioCod';
              $eliminar = 'caserio_cod';
                 // imprime tabla
-                readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar)
+                readChuquis($query,$ruta,$rutaActualizar,$eliminar)
              ?>
                     
             </tbody>

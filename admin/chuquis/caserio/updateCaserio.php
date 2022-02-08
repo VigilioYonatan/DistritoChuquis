@@ -4,13 +4,13 @@ $caserioCod = $_GET['caserioCod'];
 $errores = [];
 
 
-$querycaserio = mysqli_query($cnx, "SELECT * FROM caserio WHERE caserio_cod = '$caserioCod'");
+$querycaserio = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$caserioCod'");
 $resultadoQuery = mysqli_fetch_assoc($querycaserio);
 
-$caserioNombre    = $resultadoQuery['caserio_nombre'];
-$caserioTexto     = $resultadoQuery['caserio_texto'];
-$caserioFoto      = $resultadoQuery['caserio_foto'];
-$caserioFecha     = $resultadoQuery['caserio_fecha'];
+$caserioNombre    = $resultadoQuery['nombre'];
+$caserioTexto     = $resultadoQuery['texto'];
+$caserioFoto      = $resultadoQuery['foto'];
+$caserioFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updcaserio  = mysqli_query($cnx, "UPDATE caserio SET caserio_nombre = '$caserio_Nombre', caserio_texto ='$caserio_Texto', caserio_foto = '$nombreImagen' WHERE caserio_cod = '$caserioCod'"); //$userCod hereda de index.php
+        $updcaserio  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$caserio_Nombre', texto ='$caserio_Texto', foto = '$nombreImagen' WHERE cod = '$caserioCod'"); //$userCod hereda de index.php
       
         
         if($updcaserio){

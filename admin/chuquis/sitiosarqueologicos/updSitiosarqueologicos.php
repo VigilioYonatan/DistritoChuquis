@@ -7,13 +7,15 @@ $resultadoQuery = mysqli_fetch_assoc($querySitiosarqueologicos);
 
 $sitiosarqueologicosFoto = $resultadoQuery['chuquis_foto'];
 $sitiosarqueologicosVideo = $resultadoQuery['chuquis_video'];
+$sitiosarqueologicosTexto = $resultadoQuery['chuquis_texto'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $sitiosarqueologicos_welcome =    $_FILES['sitiosarqueologicos_welcome'];
+    $sitiosarqueologicos_welcome =      $_FILES['sitiosarqueologicos_welcome'];
     $sitiosarqueologicos_wallpaper =    $_FILES['sitiosarqueologicos_wallpaper'];
+    $sitiosarqueologicos_texto =        $_POST['sitiosarqueologicos_texto'];
   
-    $errores = validarFormularioWelcome($errores,$sitiosarqueologicos_welcome, $sitiosarqueologicos_wallpaper );
+    $errores = validarFormularioWelcome($errores,$sitiosarqueologicos_welcome, $sitiosarqueologicos_wallpaper, $sitiosarqueologicos_texto );
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nombreVideo = $sitiosarqueologicosVideo;
         }
       
-        $updatesitiosarqueologicos = mysqli_query($cnx, "UPDATE chuquis SET chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-STA'"); 
+        $updatesitiosarqueologicos = mysqli_query($cnx, "UPDATE chuquis SET chuquis_texto = '$sitiosarqueologicos_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-STA'"); 
 
         if($updatesitiosarqueologicos){
             header('Location: index.php?action=updSitiosarqueologicos&actualizado=1');
@@ -80,6 +82,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <span>VIdeo MAXIMO de 40MB</span>
             <?php echo isset($errores['videoNoDisponible']) ? "<span class='error-process'>$errores[videoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['videoPesado']) ? "<span class='error-process'>$errores[videoPesado]</span>" : '' ?>
+        </div>
+        <div class="configuracion-inp center">
+            <label class="configuracion-lbl" for="sitiosarqueologicos_texto"> Texto de Sitios Arqueologicos</label>
+            <textarea name="sitiosarqueologicos_texto" id="" cols="20" rows="5"><?php echo $sitiosarqueologicosTexto; ?></textarea>
+            <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '' ?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

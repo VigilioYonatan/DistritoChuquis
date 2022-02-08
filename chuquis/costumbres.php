@@ -1,6 +1,6 @@
 <?php
     //paginador
-    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM costumbre" );
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM chuquis_tables WHERE ChuquisCod = 'CHU-COS'" );
     $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
 
     $total = $resultadoPaginador['total'];
@@ -23,7 +23,7 @@
     }
 
     // //imagenes costumbre
-    $querycostumbre = mysqli_query($cnx, "SELECT * FROM costumbre ORDER BY costumbre_id DESC LIMIT $desde,$por_pagina");
+    $querycostumbre = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-COS' ORDER BY id DESC LIMIT $desde,$por_pagina");
 
     // wallpaper costumbres
     $costumbre = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-COS'");
@@ -81,16 +81,9 @@
     <h2 class="album__title">Costumbres</h2>
     <div class="album">
     <?php 
-    $tabla =[
-        'nombre' => 'costumbre_nombre',
-        'texto'  => 'costumbre_texto',
-        'foto'   => 'costumbre_foto',
-        'fecha'  => 'costumbre_fecha'
-    ];
-
     $ruta = 'costumbres';
 
-    listChuquis($querycostumbre, $tabla, $ruta);
+    listChuquis($querycostumbre, $ruta);
     ?>
     </div>
 </section>

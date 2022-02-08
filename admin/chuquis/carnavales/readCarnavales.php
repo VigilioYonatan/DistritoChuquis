@@ -2,7 +2,7 @@
 
 
 //traer datos de costumbres
-$queryCarnavales = mysqli_query($cnx, "SELECT * FROM carnavales ORDER BY carnavales_id DESC");
+$queryCarnavales = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE chuquisCod = 'CHU-CAR' ORDER BY id DESC");
 
 //eliminar flora por id
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -10,13 +10,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($cod){
         // query para encontrar por cod
-        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM carnavales WHERE carnavales_cod = '$cod'");
+        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$cod'");
         $resultadoQueryByCod  = mysqli_fetch_assoc($queryfloraByCod);
         
-        unlink('./mediaBD/mediaChuquis/carnavales/'.$resultadoQueryByCod['carnavales_foto']);
+        unlink('./mediaBD/mediaChuquis/carnavales/'.$resultadoQueryByCod['foto']);
 
 
-        $queryEliminar = mysqli_query($cnx, "DELETE FROM carnavales WHERE carnavales_cod = '$cod'");
+        $queryEliminar = mysqli_query($cnx, "DELETE FROM chuquis_tables WHERE cod = '$cod'");
 
         if($queryEliminar){
             header('Location:index.php?action=readCarnavales&eliminado=1');
@@ -46,19 +46,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryCarnavales;
-             $tabla = [
-                'cod'       => 'carnavales_cod',
-                'nombre'    => 'carnavales_nombre',
-                'texto'     => 'carnavales_texto',
-                'foto'      => 'carnavales_foto',
-                'fecha'     => 'carnavales_fecha',
-             ];
-
              $ruta = 'carnavales';
              $rutaActualizar = 'updateCarnavales&carnavalesCod';
              $eliminar = 'carnavales_cod';
                 // imprime tabla
-                readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar)
+                readChuquis($query,$ruta,$rutaActualizar,$eliminar)
              ?>
                     
             </tbody>

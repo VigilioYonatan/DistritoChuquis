@@ -7,13 +7,15 @@ $resultadoQuery = mysqli_fetch_assoc($queryGeografia);
 
 $geografiaFoto = $resultadoQuery['chuquis_foto'];
 $geografiaVideo = $resultadoQuery['chuquis_video'];
+$geografiaTexto = $resultadoQuery['chuquis_texto'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $geografia_welcome =    $_FILES['geografia_welcome'];
-    $geografia_wallpaper =    $_FILES['geografia_wallpaper'];
+    $geografia_welcome =        $_FILES['geografia_welcome'];
+    $geografia_wallpaper =      $_FILES['geografia_wallpaper'];
+    $geografia_texto =          $_POST['geografia_texto'];
   
-    $errores = validarFormularioWelcome($errores,$geografia_welcome, $geografia_wallpaper );
+    $errores = validarFormularioWelcome($errores,$geografia_welcome, $geografia_wallpaper, $geografia_texto );
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nombreVideo = $geografiaVideo;
         }
       
-        $updategeografia = mysqli_query($cnx, "UPDATE chuquis SET chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-GEO'"); 
+        $updategeografia = mysqli_query($cnx, "UPDATE chuquis SET chuquis_texto = '$geografia_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-GEO'"); 
 
         if($updategeografia){
             header('Location: index.php?action=updGeografia&actualizado=1');
@@ -80,6 +82,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <span>VIdeo MAXIMO de 40MB</span>
             <?php echo isset($errores['videoNoDisponible']) ? "<span class='error-process'>$errores[videoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['videoPesado']) ? "<span class='error-process'>$errores[videoPesado]</span>" : '' ?>
+        </div>
+        <div class="configuracion-inp center">
+            <label class="configuracion-lbl" for="geografia_texto"> Texto de Gografia</label>
+            <textarea name="geografia_texto" id="" cols="20" rows="5"><?php echo $geografiaTexto; ?></textarea>
+            <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '' ?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

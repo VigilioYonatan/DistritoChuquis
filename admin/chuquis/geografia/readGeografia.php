@@ -2,7 +2,7 @@
 
 
 //traer datos de costumbres
-$queryGeografia = mysqli_query($cnx, "SELECT * FROM geografia ORDER BY geografia_id DESC");
+$queryGeografia = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-GEO' ORDER BY id DESC");
 
 //eliminar flora por id
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -10,13 +10,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($cod){
         // query para encontrar por cod
-        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM geografia WHERE geografia_cod = '$cod'");
+        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$cod'");
         $resultadoQueryByCod  = mysqli_fetch_assoc($queryfloraByCod);
         
-        unlink('./mediaBD/mediaChuquis/geografia/'.$resultadoQueryByCod['geografia_foto']);
+        unlink('./mediaBD/mediaChuquis/geografia/'.$resultadoQueryByCod['foto']);
 
 
-        $queryEliminar = mysqli_query($cnx, "DELETE FROM geografia WHERE geografia_cod = '$cod'");
+        $queryEliminar = mysqli_query($cnx, "DELETE FROM chuquis_tables WHERE cod = '$cod'");
 
         if($queryEliminar){
             header('Location:index.php?action=readGeografia&eliminado=1');
@@ -46,19 +46,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryGeografia;
-             $tabla = [
-                'cod'       => 'geografia_cod',
-                'nombre'    => 'geografia_nombre',
-                'texto'     => 'geografia_texto',
-                'foto'      => 'geografia_foto',
-                'fecha'     => 'geografia_fecha',
-             ];
-
              $ruta = 'geografia';
              $rutaActualizar = 'updateGeografia&geografiaCod';
              $eliminar = 'geografia_cod';
                 // imprime tabla
-                readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar)
+                readChuquis($query,$ruta,$rutaActualizar,$eliminar)
              ?>
                     
             </tbody>

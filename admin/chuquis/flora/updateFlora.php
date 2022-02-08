@@ -4,13 +4,13 @@ $floraCod = $_GET['floraCod'];
 $errores = [];
 
 
-$queryflora = mysqli_query($cnx, "SELECT * FROM flora WHERE flora_cod = '$floraCod'");
+$queryflora = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$floraCod'");
 $resultadoQuery = mysqli_fetch_assoc($queryflora);
 
-$floraNombre    = $resultadoQuery['flora_nombre'];
-$floraTexto     = $resultadoQuery['flora_texto'];
-$floraFoto      = $resultadoQuery['flora_foto'];
-$floraFecha     = $resultadoQuery['flora_fecha'];
+$floraNombre    = $resultadoQuery['nombre'];
+$floraTexto     = $resultadoQuery['texto'];
+$floraFoto      = $resultadoQuery['foto'];
+$floraFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updflora  = mysqli_query($cnx, "UPDATE flora SET flora_nombre = '$flora_Nombre', flora_texto ='$flora_Texto', flora_foto = '$nombreImagen' WHERE flora_cod = '$floraCod'"); //$userCod hereda de index.php
+        $updflora  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$flora_Nombre', texto ='$flora_Texto', foto = '$nombreImagen' WHERE cod = '$floraCod'"); //$userCod hereda de index.php
       
         
         if($updflora){

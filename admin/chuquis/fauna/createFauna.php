@@ -1,6 +1,4 @@
 <?php
-
-
 $errores = [];
 
 $faunaNombre  = '';
@@ -33,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $codigoFauna = date('Y'.'m'.'d'.'s');
         $fechaFauna = date('Y/m/d');
 
-        $addFauna  = mysqli_query($cnx, "INSERT INTO fauna (fauna_cod, fauna_nombre, fauna_texto, fauna_foto,fauna_fecha, fauna_ChuquisCod) VALUES ('$codigoFauna','$faunaNombre','$faunaTexto', '$nombreImagen','$fechaFauna', '$chuquisCod')");
+        $addFauna  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoFauna','$faunaNombre','$faunaTexto', '$nombreImagen','$fechaFauna', '$chuquisCod')");
       
         
         if($addFauna){

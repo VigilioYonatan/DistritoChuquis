@@ -1,6 +1,6 @@
 <?php
     //paginador
-    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM flora" );
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM chuquis_tables WHERE ChuquisCod = 'CHU-FLO'" );
     $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
 
     $total = $resultadoPaginador['total'];
@@ -22,7 +22,7 @@
 
     $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
     // //imagenes costumbre
-    $queryflora = mysqli_query($cnx, "SELECT * FROM flora ORDER BY flora_id DESC LIMIT $desde,$por_pagina");
+    $queryflora = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-FLO' ORDER BY id DESC LIMIT $desde,$por_pagina");
 
     // wallpaper costumbres
     $flora = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-FLO'");
@@ -80,16 +80,9 @@
     <h2 class="album__title">Flora</h2>
     <div class="album">
     <?php 
-    $tabla =[
-        'nombre' => 'flora_nombre',
-        'texto'  => 'flora_texto',
-        'foto'   => 'flora_foto',
-        'fecha'  => 'flora_fecha'
-    ];
-
     $ruta = 'flora';
 
-    listChuquis($queryflora, $tabla, $ruta);
+    listChuquis($queryflora, $ruta);
     ?>
     </div>
 </section>

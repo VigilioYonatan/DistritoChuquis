@@ -4,13 +4,13 @@ $faunaCod = $_GET['faunaCod'];
 $errores = [];
 
 
-$queryfauna = mysqli_query($cnx, "SELECT * FROM fauna WHERE fauna_cod = '$faunaCod'");
+$queryfauna = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE cod = '$faunaCod'");
 $resultadoQuery = mysqli_fetch_assoc($queryfauna);
 
-$faunaNombre    = $resultadoQuery['fauna_nombre'];
-$faunaTexto     = $resultadoQuery['fauna_texto'];
-$faunaFoto      = $resultadoQuery['fauna_foto'];
-$faunaFecha     = $resultadoQuery['fauna_fecha'];
+$faunaNombre    = $resultadoQuery['nombre'];
+$faunaTexto     = $resultadoQuery['texto'];
+$faunaFoto      = $resultadoQuery['foto'];
+$faunaFecha     = $resultadoQuery['fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updfauna  = mysqli_query($cnx, "UPDATE fauna SET fauna_nombre = '$fauna_Nombre', fauna_texto ='$fauna_Texto', fauna_foto = '$nombreImagen' WHERE fauna_cod = '$faunaCod'"); //$userCod hereda de index.php
+        $updfauna  = mysqli_query($cnx, "UPDATE chuquis_tables SET nombre = '$fauna_Nombre', texto ='$fauna_Texto', foto = '$nombreImagen' WHERE cod = '$faunaCod'"); //$userCod hereda de index.php
       
         
         if($updfauna){

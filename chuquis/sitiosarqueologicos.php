@@ -1,6 +1,6 @@
 <?php
     //paginador
-    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM sitiosarqueologicos" );
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM chuquis_tables WHERE ChuquisCod = 'CHU-STA'" );
     $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
 
     $total = $resultadoPaginador['total'];
@@ -22,7 +22,7 @@
 
     $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
     // //imagenes costumbre
-    $querysitiosarqueologicos = mysqli_query($cnx, "SELECT * FROM sitiosarqueologicos ORDER BY sitiosarqueologicos_id DESC LIMIT $desde,$por_pagina");
+    $querysitiosarqueologicos = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'CHU-STA' ORDER BY id DESC LIMIT $desde,$por_pagina");
 
     // wallpaper costumbres
     $sitiosarqueologicos = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-STA'");
@@ -80,16 +80,10 @@
     <h2 class="album__title">Sitios Arqueológicos</h2>
     <div class="album">
     <?php 
-    $tabla =[
-        'nombre' => 'sitiosarqueologicos_nombre',
-        'texto'  => 'sitiosarqueologicos_texto',
-        'foto'   => 'sitiosarqueologicos_foto',
-        'fecha'  => 'sitiosarqueologicos_fecha'
-    ];
 
     $ruta = 'sitiosarqueologicos';
 
-    listChuquis($querysitiosarqueologicos, $tabla, $ruta);
+    listChuquis($querysitiosarqueologicos, $ruta);
     ?>
     </div>
 </section>

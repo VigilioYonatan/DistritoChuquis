@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $codigoGeografia = date('Y'.'m'.'d'.'s');
         $fechaGeografia = date('Y/m/d');
 
-        $addGeografia  = mysqli_query($cnx, "INSERT INTO geografia (geografia_cod, geografia_nombre, geografia_texto, geografia_foto,geografia_fecha, geografia_ChuquisCod) VALUES ('$codigoGeografia','$geografiaNombre','$geografiaTexto', '$nombreImagen','$fechaGeografia', '$chuquisCod')");
+        $addGeografia  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha,ChuquisCod) VALUES ('$codigoGeografia','$geografiaNombre','$geografiaTexto', '$nombreImagen','$fechaGeografia', '$chuquisCod')");
       
         
         if($addGeografia){

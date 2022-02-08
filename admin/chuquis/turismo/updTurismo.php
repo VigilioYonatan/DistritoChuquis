@@ -7,13 +7,15 @@ $resultadoQuery = mysqli_fetch_assoc($queryTurismo);
 
 $turismoFoto = $resultadoQuery['chuquis_foto'];
 $turismoVideo = $resultadoQuery['chuquis_video'];
+$turismoTexto= $resultadoQuery['chuquis_texto'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $turismo_welcome =    $_FILES['turismo_welcome'];
     $turismo_wallpaper =    $_FILES['turismo_wallpaper'];
+    $turismo_texto =    $_POST['turismo_texto'];
   
-    $errores = validarFormularioWelcome($errores,$turismo_welcome, $turismo_wallpaper );
+    $errores = validarFormularioWelcome($errores,$turismo_welcome, $turismo_wallpaper, $turismo_texto );
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nombreVideo = $turismoVideo;
         }
       
-        $updateturismo = mysqli_query($cnx, "UPDATE chuquis SET chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-TUR'"); 
+        $updateturismo = mysqli_query($cnx, "UPDATE chuquis SET chuquis_texto = '$turismo_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-TUR'"); 
 
         if($updateturismo){
             header('Location: index.php?action=updTurismo&actualizado=1');
@@ -80,6 +82,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <span>VIdeo MAXIMO de 40MB</span>
             <?php echo isset($errores['videoNoDisponible']) ? "<span class='error-process'>$errores[videoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['videoPesado']) ? "<span class='error-process'>$errores[videoPesado]</span>" : '' ?>
+        </div>
+        <div class="configuracion-inp center">
+            <label class="configuracion-lbl" for="turismo_texto"> Texto de Turismo</label>
+            <textarea name="turismo_texto" id="" cols="20" rows="5"><?php echo $turismoTexto; ?></textarea>
+            <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '' ?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

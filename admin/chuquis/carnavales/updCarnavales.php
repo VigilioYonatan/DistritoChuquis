@@ -7,13 +7,15 @@ $resultadoQuery = mysqli_fetch_assoc($queryCarnavales);
 
 $carnavalesFoto = $resultadoQuery['chuquis_foto'];
 $carnavalesVideo = $resultadoQuery['chuquis_video'];
+$carnavalesTexto = $resultadoQuery['chuquis_texto'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $carnavales_welcome =    $_FILES['carnavales_welcome'];
     $carnavales_wallpaper =    $_FILES['carnavales_wallpaper'];
+    $carnavales_texto =    $_POST['carnavales_texto'];
   
-    $errores = validarFormularioWelcome($errores,$carnavales_welcome, $carnavales_wallpaper );
+    $errores = validarFormularioWelcome($errores,$carnavales_welcome, $carnavales_wallpaper,$carnavales_texto );
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nombreVideo = $carnavalesVideo;
         }
       
-        $updatecarnavales = mysqli_query($cnx, "UPDATE chuquis SET chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-CAR'"); 
+        $updatecarnavales = mysqli_query($cnx, "UPDATE chuquis SET chuquis_texto ='$carnavales_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-CAR'"); 
 
         if($updatecarnavales){
             header('Location: index.php?action=updCarnavales&actualizado=1');
@@ -80,6 +82,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <span>VIdeo MAXIMO de 40MB</span>
             <?php echo isset($errores['videoNoDisponible']) ? "<span class='error-process'>$errores[videoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['videoPesado']) ? "<span class='error-process'>$errores[videoPesado]</span>" : '' ?>
+        </div>
+        <div class="configuracion-inp center">
+            <label class="configuracion-lbl" for="carnavales_texto"> Texto de Carnavales</label>
+            <textarea name="carnavales_texto" id="" cols="20" rows="5"><?php echo $carnavalesTexto; ?></textarea>
+            <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '' ?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

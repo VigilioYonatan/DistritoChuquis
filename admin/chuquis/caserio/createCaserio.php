@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $codigoCaserio = date('Y'.'m'.'d'.'s');
         $fechaCaserio = date('Y/m/d');
 
-        $addCaserio  = mysqli_query($cnx, "INSERT INTO caserio (caserio_cod, caserio_nombre, caserio_texto, caserio_foto,caserio_fecha, caserio_ChuquisCod) VALUES ('$codigoCaserio','$caserioNombre','$caserioTexto', '$nombreImagen','$fechaCaserio', '$chuquisCod')");
+        $addCaserio  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod) VALUES ('$codigoCaserio','$caserioNombre','$caserioTexto', '$nombreImagen','$fechaCaserio', '$chuquisCod')");
       
         
         if($addCaserio){

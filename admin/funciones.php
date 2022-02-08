@@ -50,14 +50,14 @@ function validarFormulario($errores,$nombre, $texto, $foto, $upd = false){
 
 // read Chuquis 
 
-function readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar){
+function readChuquis($query,$ruta,$rutaActualizar,$eliminar){
     $i = 0;
     while($row = mysqli_fetch_assoc($query)):
-        $cod    = $row[ $tabla['cod'] ];
-        $nombre = $row[ $tabla['nombre'] ];
-        $texto  = $row[ $tabla['texto'] ];
-        $foto   = $row[ $tabla['foto'] ];
-        $fecha  = $row[ $tabla['fecha'] ];
+        $cod    = $row['cod'];
+        $nombre = $row[ 'nombre'];
+        $texto  = $row[ 'texto' ];
+        $foto   = $row[ 'foto' ];
+        $fecha  = $row[ 'fecha' ];
         $i++;
         echo "<tr>
                 <td>$i</td>
@@ -81,7 +81,7 @@ function readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar){
 
 // validacion wallpaper welcome
 
-function validarFormularioWelcome($errores, $welcome, $wallpaper){
+function validarFormularioWelcome($errores, $welcome, $wallpaper, $texto){
     $errores = [];
     if($welcome['size'] > 2000000){
         $errores['fotoPesado'] = 'Imagen Muy pesado, max de 2MB';
@@ -89,6 +89,10 @@ function validarFormularioWelcome($errores, $welcome, $wallpaper){
 
     if( $welcome['type'] !== 'image/jpeg' && $welcome['type'] !== 'image/jpg' && $welcome['type'] !== 'image/png' && $welcome['type'] !== 'image/webp' && !$welcome['error']){
         $errores['fotoNoDisponible'] = 'Imagen no disponible, Solo formatos imagenes';
+    }
+
+    if(!$texto){
+        $errores['textoVacio'] = 'NO debe estar vacio el texto';
     }
 
     

@@ -7,13 +7,15 @@ $resultadoQuery = mysqli_fetch_assoc($queryCostumbres);
 
 $costumbresFoto = $resultadoQuery['chuquis_foto'];
 $costumbresVideo = $resultadoQuery['chuquis_video'];
+$costumbresTexto = $resultadoQuery['chuquis_texto'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $costumbres_welcome =    $_FILES['costumbres_welcome'];
-    $costumbres_wallpaper =    $_FILES['costumbres_wallpaper'];
+    $costumbres_welcome =       $_FILES['costumbres_welcome'];
+    $costumbres_wallpaper =     $_FILES['costumbres_wallpaper'];
+    $costumbres_texto =         $_POST['costumbres_texto'];
   
-    $errores = validarFormularioWelcome($errores,$costumbres_welcome, $costumbres_wallpaper );
+    $errores = validarFormularioWelcome($errores,$costumbres_welcome, $costumbres_wallpaper,$costumbres_texto );
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nombreVideo = $costumbresVideo;
         }
       
-        $updatecostumbres = mysqli_query($cnx, "UPDATE chuquis SET chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-COS'"); 
+        $updatecostumbres = mysqli_query($cnx, "UPDATE chuquis SET chuquis_texto ='$costumbres_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'CHU-COS'"); 
 
         if($updatecostumbres){
             header('Location: index.php?action=updCostumbres&actualizado=1');
@@ -80,6 +82,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <span>VIdeo MAXIMO de 40MB</span>
             <?php echo isset($errores['videoNoDisponible']) ? "<span class='error-process'>$errores[videoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['videoPesado']) ? "<span class='error-process'>$errores[videoPesado]</span>" : '' ?>
+        </div>
+        <div class="configuracion-inp center">
+            <label class="configuracion-lbl" for="costumbres_texto"> Texto de Costumbres</label>
+            <textarea name="costumbres_texto" id="" cols="20" rows="5"><?php echo $costumbresTexto; ?></textarea>
+            <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '' ?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 
