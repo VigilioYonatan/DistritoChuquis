@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
 
 
-        $updcarnavales  = mysqli_query($cnx, "UPDATE carnavales SET carnavales_nombre = '$carnavales_Nombre', carnavales_texto ='$carnavales_Texto', carnavales_foto = '$nombreImagen' WHERE carnavales_cod = '$carnavalesCod'"); //$userCod hereda de index.php
+        $updcarnavales  = mysqli_query($cnx, "UPDATE carnavales SET carnavales_nombre = '$carnavales_Nombre', carnavales_texto ='$carnavales_Texto', carnavales_foto = '$nombreImagen' WHERE carnavales_cod = '$carnavalesCod'"); 
       
         
         if($updcarnavales){

@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
-        $mediaturismo = '/turismo/';
+        $mediaturismo = '/chuquis/';
 
         //crear carpeta si no exister
         if(!is_dir($carpetaMediaBD.$mediaturismo)){
@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <input  class="configuracion-file" type="file" accept="image/*" name="turismo_welcome" id="turismo_welcome">
             <?php echo isset($errores['fotoNoDisponible']) ? "<span class='error-process'>$errores[fotoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['fotoPesado']) ? "<span class='error-process'>$errores[fotoPesado]</span>" : ''; ?>
-            <img width="100px" src="./mediaBD/mediaChuquis/turismo/<?php echo $turismoFoto; ?>" alt="">
+            <img width="100px" src="./mediaBD/mediaChuquis/chuquis/<?php echo $turismoFoto; ?>" alt="">
         </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl-file"  for="turismo_wallpaper"><i class="fas fa-video"></i> VIDEO WALLPAPER</label>

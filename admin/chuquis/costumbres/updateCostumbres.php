@@ -1,55 +1,27 @@
 <?php
 
-$costumbreCod = $_GET['costumbreCod'];
+$costumbresCod = $_GET['CostumbreCod'];
 $errores = [];
 
 
-$queryCostumbre = mysqli_query($cnx, "SELECT * FROM costumbre WHERE costumbre_cod = '$costumbreCod'");
-$resultadoQuery = mysqli_fetch_assoc($queryCostumbre);
+$querycostumbres = mysqli_query($cnx, "SELECT * FROM costumbre WHERE costumbre_cod = '$costumbresCod'");
+$resultadoQuery = mysqli_fetch_assoc($querycostumbres);
 
-$costumbreNombre    = $resultadoQuery['costumbre_nombre'];
-$costumbreTexto     = $resultadoQuery['costumbre_texto'];
-$costumbreFoto      = $resultadoQuery['costumbre_foto'];
-$costumbreFecha     = $resultadoQuery['costumbre_fecha'];
+$costumbresNombre    = $resultadoQuery['costumbre_nombre'];
+$costumbresTexto     = $resultadoQuery['costumbre_texto'];
+$costumbresFoto      = $resultadoQuery['costumbre_foto'];
+$costumbresFecha     = $resultadoQuery['costumbre_fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
+    $costumbres_Nombre = mysqli_escape_string($cnx, trim($_POST['costumbres_nombre'])); 
+    $costumbres_Texto = mysqli_escape_string($cnx, trim($_POST['costumbres_texto'])); 
+    $costumbres_Foto = $_FILES['costumbres_foto'];
 
-
-    $costumbre_Nombre = mysqli_escape_string($cnx, trim($_POST['costumbre_nombre'])); 
-    $costumbre_Texto = mysqli_escape_string($cnx, trim($_POST['costumbre_texto'])); 
-    $costumbre_Foto = $_FILES['costumbre_foto'];
-
-   
-    // var_dump($user_foto);
-    // exit;
-    if(!$costumbre_Nombre){
-        $errores['nombreVacio'] = 'El nombre no debe estar Vacio';
-    }
-
-    if(strlen($costumbre_Nombre) > 50){
-        $errores['nombreLargo'] = 'Nombre demasiado Largo max 50';
-    }
-
-    if(!$costumbre_Texto){
-        $errores['textoVacio'] = 'El texto no debe estar vacio';
-    }
-
- 
-
+    // validar formulario
+    $errores = validarFormulario($errores,$costumbres_Nombre , $costumbres_Texto, $costumbres_Foto, true);
     
-
-  
-    if($costumbre_Foto['size'] > 5000000){
-        $errores['fotoPesado'] = 'Imagen Muy pesado, menos de 5MB';
-    }
-
-
-
-    if( $costumbre_Foto['type'] !== 'image/jpeg' && $costumbre_Foto['type'] !== 'image/jpg' && $costumbre_Foto['type'] !== 'image/png' && $costumbre_Foto['type'] !== 'image/webp' && !$costumbre_Foto['error']){
-        $errores['fotoNoDisponible'] = 'Insertar Imagen obligatoriamente en formato imagen';
-    }
-
+   
     if(empty($errores)){
 
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -57,20 +29,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $nombreImagen = '';
 
-        if($costumbre_Foto['name']){
-            unlink($carpetaMediaBD.$costumbresImagenes.$costumbreFoto );
+        if($costumbres_Foto['name']){
+            unlink($carpetaMediaBD.$costumbresImagenes.$costumbresFoto );
             $nombreImagen = md5( uniqid( rand(), true)).".jpg";
-            move_uploaded_file($costumbre_Foto['tmp_name'], $carpetaMediaBD.$costumbresImagenes.$nombreImagen); 
+            move_uploaded_file($costumbres_Foto['tmp_name'], $carpetaMediaBD.$costumbresImagenes.$nombreImagen); 
         }else{
-            $nombreImagen = $costumbreFoto ;
+            $nombreImagen = $costumbresFoto ;
         }
 
 
-        $updCostumbre  = mysqli_query($cnx, "UPDATE costumbre SET costumbre_nombre = '$costumbre_Nombre', costumbre_texto ='$costumbre_Texto', costumbre_foto = '$nombreImagen' WHERE costumbre_cod = '$costumbreCod'"); //$userCod hereda de index.php
+        $updcostumbres  = mysqli_query($cnx, "UPDATE costumbre SET costumbre_nombre = '$costumbres_Nombre', costumbre_texto ='$costumbres_Texto', costumbre_foto = '$nombreImagen' WHERE costumbre_cod = '$costumbresCod'"); //$userCod hereda de index.php
       
         
-        if($updCostumbre){
-            header('Location: index.php?action=readCostumbres');
+        if($updcostumbres){
+            header('Location: index.php?action=readCostumbres&actualizado=1');
         }
     }   
     
@@ -80,35 +52,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 <section class="configuracion">
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
-        <h3 class="configuracion-title">Editar Costumbres de <?php echo $costumbreCod; ?></h3>
+        <h3 class="configuracion-title">Editar Costumbres de <?php echo $costumbresCod; ?></h3>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl"  for="costumbre_nombre">Titulo de la imagen:</label>
-            <input class="configuracion-input" type="text" value="<?php echo $costumbreNombre; ?>" name="costumbre_nombre" placeholder="Titulo">
-            <?php if(isset($errores['nombreVacio'])):?>
-                <span class="error-process"><?php echo $errores['nombreVacio']; ?></span>
-            <?php endif; ?>
-            <?php if(isset($errores['nombreLargo'])):?>
-                <span class="error-process"><?php echo $errores['nombreLargo']; ?></span>
-            <?php endif; ?>
+            <label class="configuracion-lbl"  for="costumbres_nombre">Titulo de la imagen:</label>
+            <input class="configuracion-input" type="text" value="<?php echo $costumbresNombre; ?>" name="costumbres_nombre" placeholder="Titulo">
+                <?php echo isset($errores['nombreVacio']) ? "<span class='error-process'>$errores[nombreVacio]</span>" : '' ?>
+                <?php echo isset($errores['nombreLargo']) ? "<span class='error-process'>$errores[nombreLargo]</span>" : ''; ?>
         </div>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl"  for="costumbre_texto">Texto de la imagen</label>
-            <textarea class="configuracion-textArea" name="costumbre_texto"><?php echo $costumbreTexto; ?></textarea>
-            <?php if(isset($errores['textoVacio'])):?>
-                <span class="error-process"><?php echo $errores['textoVacio']; ?></span>
-            <?php endif; ?>
+            <label class="configuracion-lbl"  for="costumbres_texto">Texto de la imagen</label>
+            <textarea class="configuracion-textArea" name="costumbres_texto"><?php echo $costumbresTexto; ?></textarea>
+                <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '';?>
         </div>
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl-file"  for="costumbre_foto"><i class="fas fa-image"></i> Imagen</label>
-            <input  class="configuracion-file" accept="image/*" type="file" name="costumbre_foto" id="costumbre_foto" >
-            <img width="200px" src="./mediaBD/mediaChuquis/costumbres/<?php echo $costumbreFoto; ?>" alt="">
-
-            <?php if(isset($errores['fotoNoDisponible'])): ?>
-                <span class="error-process"><?php echo $errores['fotoNoDisponible']; ?></span>
-            <?php  endif;?>
-            <?php if(isset($errores['fotoPesado'])): ?>
-                <span class="error-process"><?php echo $errores['fotoPesado']; ?></span>
-            <?php  endif;?>
+            <label class="configuracion-lbl-file"  for="costumbres_foto"><i class="fas fa-image"></i> Imagen</label>
+            <input  class="configuracion-file" accept="image/*" type="file" name="costumbres_foto" id="costumbres_foto" >
+            <img width="200px" src="./mediaBD/mediaChuquis/costumbres/<?php echo $costumbresFoto; ?>" alt="">
+            
+            <?php echo isset($errores['fotoNoDisponible']) ? "<span class='error-process'>$errores[fotoNoDisponible]</span>" : '';?>
+            <?php echo isset($errores['fotoPesado']) ? "<span class='error-process'>$errores[fotoPesado]</span>" : '';?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 ?>
 <section class="configuracion">
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
-        <h3 class="configuracion-title">Geografías</h3>
+        <h3 class="configuracion-title">Sitios Arqueológicos</h3>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl"  for="carnavales_nombre">Titulo de la imagen:</label>
             <input class="configuracion-input" type="text" value="<?php echo $carnavalesNombre; ?>" name="carnavales_nombre" placeholder="Titulo">

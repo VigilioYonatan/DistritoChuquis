@@ -32,8 +32,8 @@ if(isset($_GET['action'])){
           require_once './chuquis/carnavales.php';
           break;
     
-        case 'sitiosAr':
-          require_once './chuquis/sitiosAr.php';
+        case 'sitiosarqueologicos':
+          require_once './chuquis/sitiosarqueologicos.php';
           break;
     
         

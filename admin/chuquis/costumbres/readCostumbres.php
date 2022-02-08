@@ -1,20 +1,17 @@
 <?php 
 
 
-//traer datos de costumbres
-$queryCostumbres = mysqli_query($cnx, "SELECT * FROM costumbre ORDER BY costumbre_id DESC");
+//traer datos de Costumbre
+$queryCostumbre = mysqli_query($cnx, "SELECT * FROM costumbre ORDER BY costumbre_id DESC");
 
-
-//eliminar COstumbre por id
+//eliminar flora por id
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $cod = $_POST['costumbre_cod'];
 
     if($cod){
-
         // query para encontrar por cod
-        $queryCostumbreByCod = mysqli_query($cnx, "SELECT * FROM costumbre WHERE costumbre_cod = '$cod'");
-        
-        $resultadoQueryByCod  = mysqli_fetch_assoc($queryCostumbreByCod);
+        $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM costumbre WHERE costumbre_cod = '$cod'");
+        $resultadoQueryByCod  = mysqli_fetch_assoc($queryfloraByCod);
         
         unlink('./mediaBD/mediaChuquis/costumbres/'.$resultadoQueryByCod['costumbre_foto']);
 
@@ -34,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <section class="read">
 <div class="header_fixed">
         <table>
-            <h2 class="table__title">Costumbres</h2>
+            <h2 class="table__title">Costumbre</h2>
             <thead>
                 <tr>
                     <th>N°</th>
@@ -47,32 +44,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    $i = 1;
-                    while($rowCostumbre = mysqli_fetch_assoc($queryCostumbres)):
-                        $costrumbreCod = $rowCostumbre['costumbre_cod'];
-                        $costrumbreNombre = $rowCostumbre['costumbre_nombre'];
-                        $costrumbreTexto = $rowCostumbre['costumbre_texto'];
-                        $costrumbreFoto = $rowCostumbre['costumbre_foto'];
-                        $costrumbreFecha= $rowCostumbre['costumbre_fecha'];
-                ?>
-                <tr>
-                    <td><?php echo $i++; ?></td>
-                    <td><img src="./mediaBD/mediaChuquis/costumbres/<?php echo $costrumbreFoto; ?>" /></td>
-                    <td><?php echo $costrumbreCod; ?></td>
-                    <td><?php echo $costrumbreNombre; ?></td>
-                    <td><?php echo $costrumbreTexto; ?></td>
-                    <td><?php echo $costrumbreFecha; ?></td>
-                    <td class="table-btn">
-                        <a href="index.php?action=updateCostumbres&costumbreCod=<?php echo $costrumbreCod; ?>" class="table-btn__upd"><i class="fas fa-pen-alt"></i>Actualizar</a>
-                        <form action="" method="POST">
-                            <input type="hidden" name="costumbre_cod" value="<?php echo $costrumbreCod; ?>">
-                            <button  class="table-btn__del"><i class="fas fa-trash"></i>Eliminar</button>
-                           
-                        </form>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
+             <?php
+             $query = $queryCostumbre;
+             $tabla = [
+                'cod'       => 'costumbre_cod',
+                'nombre'    => 'costumbre_nombre',
+                'texto'     => 'costumbre_texto',
+                'foto'      => 'costumbre_foto',
+                'fecha'     => 'costumbre_fecha',
+             ];
+
+             $ruta = 'costumbres';
+             $rutaActualizar = 'updateCostumbres&CostumbreCod';
+             $eliminar = 'costumbre_cod';
+                // imprime tabla
+                readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar)
+             ?>
+                    
             </tbody>
         </table>
 

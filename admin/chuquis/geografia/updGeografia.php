@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
-        $mediageografia = '/geografia/';
+        $mediageografia = '/chuquis/';
 
         //crear carpeta si no exister
         if(!is_dir($carpetaMediaBD.$mediageografia)){
@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <input  class="configuracion-file" type="file" accept="image/*" name="geografia_welcome" id="geografia_welcome">
             <?php echo isset($errores['fotoNoDisponible']) ? "<span class='error-process'>$errores[fotoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['fotoPesado']) ? "<span class='error-process'>$errores[fotoPesado]</span>" : ''; ?>
-            <img width="100px" src="./mediaBD/mediaChuquis/geografia/<?php echo $geografiaFoto; ?>" alt="">
+            <img width="100px" src="./mediaBD/mediaChuquis/chuquis/<?php echo $geografiaFoto; ?>" alt="">
         </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl-file"  for="geografia_wallpaper"><i class="fas fa-video"></i> VIDEO WALLPAPER</label>

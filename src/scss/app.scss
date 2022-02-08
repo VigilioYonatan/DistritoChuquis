@@ -20,4 +20,7 @@
 //admin
 @use 'admin/index.scss';
 @use 'admin/configuracion.scss';
-@use 'admin/read.scss'
+@use 'admin/read.scss';
+
+//animacion 
+@use 'imagenesEffect';

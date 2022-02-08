@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     if(empty($errores)){
         $carpetaMediaBD = './mediaBD/mediaChuquis';
-        $mediacaserio = '/caserio/';
+        $mediacaserio = '/chuquis/';
 
         //crear carpeta si no exister
         if(!is_dir($carpetaMediaBD.$mediacaserio)){
@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <input  class="configuracion-file" type="file" accept="image/*" name="caserio_welcome" id="caserio_welcome">
             <?php echo isset($errores['fotoNoDisponible']) ? "<span class='error-process'>$errores[fotoNoDisponible]</span>" : ''; ?>
             <?php echo isset($errores['fotoPesado']) ? "<span class='error-process'>$errores[fotoPesado]</span>" : ''; ?>
-            <img width="100px" src="./mediaBD/mediaChuquis/caserio/<?php echo $caserioFoto; ?>" alt="">
+            <img width="100px" src="./mediaBD/mediaChuquis/chuquis/<?php echo $caserioFoto; ?>" alt="">
         </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl-file"  for="caserio_wallpaper"><i class="fas fa-video"></i> VIDEO WALLPAPER</label>

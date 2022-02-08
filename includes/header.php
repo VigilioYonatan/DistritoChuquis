@@ -18,7 +18,7 @@ session_start();
         <nav class="navbar">
             <a href="" class="navbar-logo"><img class="navbar-logo__img" src="./build/img/logo.webp" alt=""></a>
             <form class="navbar-search" method="GET" action="search.php">
-                <input class="navbar-search__input" type="text" placeholder="Buscar" name="searh_text">
+                <input class="navbar-search__input" type="text" placeholder="Buscar" name="search_text">
                 <button><i  class="fas fa-search navbar-search__ico "></i></button>
             </form>
             <ul class="navbar-menu">
@@ -32,7 +32,7 @@ session_start();
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuquis.php?action=caserios">Caserios</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuquis.php?action=geografia">Geografia</a></li>
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuquis.php?action=carnavales">Carnavales</a></li>
-                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuquis.php?action=sitiosAr">Sitios Arquelógicos</a></li>                      
+                        <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuquis.php?action=sitiosarqueologicos">Sitios Arquelógicos</a></li>                      
                     </ul>
                 </li>
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Tingo Maria</a></li>

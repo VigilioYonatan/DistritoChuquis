@@ -1,23 +1,47 @@
 <?php
-    //imagenes costumbre
-    $queryFauna = mysqli_query($cnx, "SELECT * FROM fauna");
+    //paginador
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM fauna" );
+    $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
+
+    $total = $resultadoPaginador['total'];
+
+    $por_pagina = 12;
+    
+
+    if(empty($_GET['pagina'])){
+        $pagina = 1;
+    }else{
+        $pagina = $_GET['pagina'];
+    }
+
+    $desde = ($pagina - 1) * $por_pagina;
+
+    if(isset($_GET['pagina']) && $_GET['pagina'] > $totalPaginas ){
+        header('Location: index.php');
+    }
+
+    $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
+    // //imagenes costumbre
+    $queryfauna = mysqli_query($cnx, "SELECT * FROM fauna ORDER BY fauna_id DESC LIMIT $desde,$por_pagina");
 
     // wallpaper costumbres
     $fauna = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-FAU'");
-    $resultadoFauna = mysqli_fetch_assoc($fauna);
+    $resultadofauna = mysqli_fetch_assoc($fauna);
 
-    $faunaNombre = $resultadoFauna['chuquis_nombre'];
-    $faunaFoto = $resultadoFauna['chuquis_foto'];
-    $faunaVideo = $resultadoFauna['chuquis_video'];
+    $faunaNombre = $resultadofauna['chuquis_nombre'];
+    $faunaFoto = $resultadofauna['chuquis_foto'];
+    $faunaVideo = $resultadofauna['chuquis_video'];
 ?>
     
 <!-- wallpaper -->
+<?php if(!isset($_GET['pagina']) || $_GET['pagina'] < 2): ?>
+
 <section class="container-wallpaper" id="welcome">
         <div class="container-wallpaper__background"></div>
-    <video class="container-wallpaper__video" src="./admin/mediaBD/mediaChuquis/fauna/<?php echo $faunaVideo; ?>" autoplay muted loop></video>
+    <video class="container-wallpaper__video" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $faunaVideo; ?>" autoplay muted loop></video>
     <div class="wallpaper">
         <picture class="wallpaper-info">
-            <img class="wallpaper-info__img" src="./admin/mediaBD/mediaChuquis/fauna/<?php echo $faunaFoto; ?>" alt="">
+            <img class="wallpaper-info__img" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $faunaFoto; ?>" alt="">
             <div class="wallpaper-info-text">
                 <h2 class="wallpaper-info-text__title">Bienvenido!</h2>
                 <span class="wallpaper-info-text__txt"><?php echo $faunaNombre; ?></span>
@@ -49,9 +73,10 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 <!-- fin wallpaper -->
 <!-- card -->
-<section class="album-container">
+<section class="<?php echo isset($_GET['pagina']) && $_GET['pagina'] >= 2 ? 'borrarPadding' : 'album-container '; ?>">
     <h2 class="album__title">Fauna</h2>
     <div class="album">
     <?php 
@@ -64,14 +89,18 @@
 
     $ruta = 'fauna';
 
-    listChuquis($queryFauna, $tabla, $ruta);
+    listChuquis($queryfauna, $tabla, $ruta);
     ?>
     </div>
 </section>
 <!-- fin card -->
 <!-- paginador -->
 <div class="paginador-container">
-    <div class="paginador">
-
+        <ul class="paginador">
+        <?php
+            $url = 'paginador';
+             paginador($pagina, $totalPaginas,$url);
+            ?>
+        </ul>
     </div>
 </div>

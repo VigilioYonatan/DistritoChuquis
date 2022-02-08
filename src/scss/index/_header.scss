@@ -58,6 +58,11 @@
         &__ico{
             color: var.$blanco;
         }
+
+        & button{
+            background-color: transparent;
+            border: none;
+        }
     }
 
     &-menu{

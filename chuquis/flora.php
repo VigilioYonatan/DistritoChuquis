@@ -1,8 +1,30 @@
 <?php
-    //imagenes flora
-    $queryFlora = mysqli_query($cnx, "SELECT * FROM flora ORDER BY flora_id DESC");
+    //paginador
+    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM flora" );
+    $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
 
-    // wallpaper flora
+    $total = $resultadoPaginador['total'];
+
+    $por_pagina = 12;
+    
+
+    if(empty($_GET['pagina'])){
+        $pagina = 1;
+    }else{
+        $pagina = $_GET['pagina'];
+    }
+
+    $desde = ($pagina - 1) * $por_pagina;
+
+    if(isset($_GET['pagina']) && $_GET['pagina'] > $totalPaginas ){
+        header('Location: index.php');
+    }
+
+    $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
+    // //imagenes costumbre
+    $queryflora = mysqli_query($cnx, "SELECT * FROM flora ORDER BY flora_id DESC LIMIT $desde,$por_pagina");
+
+    // wallpaper costumbres
     $flora = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-FLO'");
     $resultadoflora = mysqli_fetch_assoc($flora);
 
@@ -12,15 +34,17 @@
 ?>
     
 <!-- wallpaper -->
+<?php if(!isset($_GET['pagina']) || $_GET['pagina'] < 2): ?>
+
 <section class="container-wallpaper" id="welcome">
         <div class="container-wallpaper__background"></div>
-    <video class="container-wallpaper__video" src="./admin/mediaBD/mediaChuquis/flora/<?php echo $floraVideo; ?>" autoplay muted loop></video>
+    <video class="container-wallpaper__video" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $floraVideo; ?>" autoplay muted loop></video>
     <div class="wallpaper">
         <picture class="wallpaper-info">
-            <img class="wallpaper-info__img" src="./admin/mediaBD/mediaChuquis/flora/<?php echo $floraFoto; ?>" alt="">
+            <img class="wallpaper-info__img" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $floraFoto; ?>" alt="">
             <div class="wallpaper-info-text">
-                <h2 class="wallpaper-info-text__title">Bienvenido a</h2>
-                <span class="wallpaper-info-text__txt"><?php echo $floraNombre; ?> !</span>
+                <h2 class="wallpaper-info-text__title">Bienvenido!</h2>
+                <span class="wallpaper-info-text__txt"><?php echo $floraNombre; ?></span>
             </div>
         </picture>
         <article class="wallpaper-about">
@@ -49,33 +73,34 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 <!-- fin wallpaper -->
 <!-- card -->
-<section class="album-container">
+<section class="<?php echo isset($_GET['pagina']) && $_GET['pagina'] >= 2 ? 'borrarPadding' : 'album-container '; ?>">
     <h2 class="album__title">Flora</h2>
     <div class="album">
+    <?php 
+    $tabla =[
+        'nombre' => 'flora_nombre',
+        'texto'  => 'flora_texto',
+        'foto'   => 'flora_foto',
+        'fecha'  => 'flora_fecha'
+    ];
 
-    <?php while($rowFlora =  mysqli_fetch_assoc($queryFlora)):
-            $floraNombre  = $rowFlora['flora_nombre'];
-            $floraTexto  = $rowFlora['flora_texto'];
-            $floraFoto  = $rowFlora['flora_foto'];
-            $floraFecha  = $rowFlora['flora_fecha'];
-        ?>
-        <picture class="album-card">
-            <img class="album-card__img" src="./admin/mediaBD/mediaChuquis/flora/<?php  echo $floraFoto;?>" alt="">
-            <div class="card-info">
-                <h3 class="card-info__title"><?php echo $floraNombre; ?></h3>
-                <p class="card-info__text"><?php echo $floraTexto; ?></p>
-                <span class="card-info__time">Publicado: <b><?php echo $floraFecha; ?></b></span>
-            </div>
-        </picture>
-        <?php endwhile; ?>
+    $ruta = 'flora';
+
+    listChuquis($queryflora, $tabla, $ruta);
+    ?>
     </div>
 </section>
 <!-- fin card -->
 <!-- paginador -->
 <div class="paginador-container">
-    <div class="paginador">
-
+        <ul class="paginador">
+        <?php
+            $url = 'flora';
+             paginador($pagina, $totalPaginas,$url);
+            ?>
+        </ul>
     </div>
 </div>

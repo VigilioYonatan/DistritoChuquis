@@ -14,42 +14,14 @@ $floraFecha     = $resultadoQuery['flora_fecha'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-
-
     $flora_Nombre = mysqli_escape_string($cnx, trim($_POST['flora_nombre'])); 
     $flora_Texto = mysqli_escape_string($cnx, trim($_POST['flora_texto'])); 
     $flora_Foto = $_FILES['flora_foto'];
 
-   
-    // var_dump($user_foto);
-    // exit;
-    if(!$flora_Nombre){
-        $errores['nombreVacio'] = 'El nombre no debe estar Vacio';
-    }
-
-    if(strlen($flora_Nombre) > 50){
-        $errores['nombreLargo'] = 'Nombre demasiado Largo max 50';
-    }
-
-    if(!$flora_Texto){
-        $errores['textoVacio'] = 'El texto no debe estar vacio';
-    }
-
- 
-
+    // validar formulario
+    $errores = validarFormulario($errores,$flora_Nombre , $flora_Texto, $flora_Foto, true);
     
-
-  
-    if($flora_Foto['size'] > 5000000){
-        $errores['fotoPesado'] = 'Imagen Muy pesado, menos de 5MB';
-    }
-
-
-
-    if( $flora_Foto['type'] !== 'image/jpeg' && $flora_Foto['type'] !== 'image/jpg' && $flora_Foto['type'] !== 'image/png' && $flora_Foto['type'] !== 'image/webp' && !$flora_Foto['error']){
-        $errores['fotoNoDisponible'] = 'Insertar Imagen obligatoriamente en formato imagen';
-    }
-
+   
     if(empty($errores)){
 
         $carpetaMediaBD = './mediaBD/mediaChuquis';
@@ -70,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       
         
         if($updflora){
-            header('Location: index.php?action=readFlora');
+            header('Location: index.php?action=readFlora&actualizado=1');
         }
     }   
     
@@ -84,31 +56,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class="configuracion-inp center">
             <label class="configuracion-lbl"  for="flora_nombre">Titulo de la imagen:</label>
             <input class="configuracion-input" type="text" value="<?php echo $floraNombre; ?>" name="flora_nombre" placeholder="Titulo">
-            <?php if(isset($errores['nombreVacio'])):?>
-                <span class="error-process"><?php echo $errores['nombreVacio']; ?></span>
-            <?php endif; ?>
-            <?php if(isset($errores['nombreLargo'])):?>
-                <span class="error-process"><?php echo $errores['nombreLargo']; ?></span>
-            <?php endif; ?>
+                <?php echo isset($errores['nombreVacio']) ? "<span class='error-process'>$errores[nombreVacio]</span>" : '' ?>
+                <?php echo isset($errores['nombreLargo']) ? "<span class='error-process'>$errores[nombreLargo]</span>" : ''; ?>
         </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl"  for="flora_texto">Texto de la imagen</label>
             <textarea class="configuracion-textArea" name="flora_texto"><?php echo $floraTexto; ?></textarea>
-            <?php if(isset($errores['textoVacio'])):?>
-                <span class="error-process"><?php echo $errores['textoVacio']; ?></span>
-            <?php endif; ?>
+                <?php echo isset($errores['textoVacio']) ? "<span class='error-process'>$errores[textoVacio]</span>" : '';?>
         </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl-file"  for="flora_foto"><i class="fas fa-image"></i> Imagen</label>
             <input  class="configuracion-file" accept="image/*" type="file" name="flora_foto" id="flora_foto" >
             <img width="200px" src="./mediaBD/mediaChuquis/flora/<?php echo $floraFoto; ?>" alt="">
-
-            <?php if(isset($errores['fotoNoDisponible'])): ?>
-                <span class="error-process"><?php echo $errores['fotoNoDisponible']; ?></span>
-            <?php  endif;?>
-            <?php if(isset($errores['fotoPesado'])): ?>
-                <span class="error-process"><?php echo $errores['fotoPesado']; ?></span>
-            <?php  endif;?>
+            
+            <?php echo isset($errores['fotoNoDisponible']) ? "<span class='error-process'>$errores[fotoNoDisponible]</span>" : '';?>
+            <?php echo isset($errores['fotoPesado']) ? "<span class='error-process'>$errores[fotoPesado]</span>" : '';?>
         </div>
         <input class="configuracion-submit" type="submit" value="Actualizar">
 

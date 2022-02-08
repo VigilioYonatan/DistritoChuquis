@@ -34,7 +34,7 @@ if($userQuery -> num_rows){
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../build/css/app.css?<?php echo date('s'); ?>" />
-    <title>CSS GRID DASHBOARD</title>
+    <title>Admin</title>
   </head>
   <body id="bodyAdmin">
     <div class="container">
@@ -59,31 +59,23 @@ if($userQuery -> num_rows){
               <a href="index.php?action=readCaserio">Caserios</a>
               <a href="index.php?action=readGeografia">Geografía</a>
               <a href="index.php?action=readCarnavales">Carnavales</a>
+              <a href="index.php?action=readSitiosarqueologicos">Sitios Arqueologicos</a>
             </div>
             <div class="link">
               <span class="link-title">Tingo Maria</span>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
+       
             </div>
             <div class="link">
               <span class="link-title">Blog Personal</span>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
+ 
             </div>
             <div class="link">
               <span class="link-title">Kuyaiki</span>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
+     
             </div>
             <div class="link">
               <span class="link-title">Soporte</span>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
-              <a href="">Inicio Wallpaper</a>
-              
+         
             </div>
             <div class="link">
               <a href="index.php?action=configuracion" class="link-title">Configuracion</a>
@@ -128,7 +120,7 @@ if($userQuery -> num_rows){
           break;
 
         case 'updCostumbres':
-          require_once 'chuquis/flora/updFlora.php';
+          require_once 'chuquis/costumbres/updCostumbres.php';
           break;
 
           // chuquis-flora
@@ -231,6 +223,23 @@ if($userQuery -> num_rows){
 
         case 'updCarnavales':
           require_once 'chuquis/carnavales/updCarnavales.php';
+          break;
+        
+          // chuquis-sitiosArqueologicos
+        case 'createSitiosarqueologicos':
+          require_once 'chuquis/sitiosarqueologicos/createSitiosarqueologicos.php';
+          break;
+          
+        case 'readSitiosarqueologicos':
+          require_once 'chuquis/sitiosarqueologicos/readSitiosarqueologicos.php';
+          break;
+
+        case 'updateSitiosarqueologicos':
+          require_once 'chuquis/sitiosarqueologicos/updateSitiosarqueologicos.php';
+          break;
+
+        case 'updSitiosarqueologicos':
+          require_once 'chuquis/sitiosarqueologicos/updSitiosarqueologicos.php';
           break;
         
         default:

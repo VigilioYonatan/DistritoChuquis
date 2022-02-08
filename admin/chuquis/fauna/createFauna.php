@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         move_uploaded_file($faunaFoto['tmp_name'], $carpetaMediaBD.$faunaImagenes.$nombreImagen); 
 
 
-        $chuquisCod = 'CHU-TUR';
+        $chuquisCod = 'CHU-FAU';
         $codigoFauna = date('Y'.'m'.'d'.'s');
         $fechaFauna = date('Y/m/d');
 

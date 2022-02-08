@@ -133,47 +133,7 @@ $inicioYoutube = $resultadoQuery['inicio_youtube'];
                             <a href="#" class="carousel__link">Ver Más</a>
                         </article>
 					</div>
-					<div class="carousel__elemento">
-						<img src="./build/img/paisaje2.webp" alt="Constitution Square - Tower I">
-						<article class="carousel__parrafo">
-                            <span class="carousel__title">Geografia</span>
-                                <p class="carousel__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, quisquam? Eligendi asperiores voluptas </p>
-                                <a href="#" class="carousel__link">Ver Más</a>
-                        </article>
-					</div>
-					<div class="carousel__elemento">
-						<img src="./build/img/paisaje3.webp" alt="Empire State Building">
-						<article class="carousel__parrafo">
-                            <span class="carousel__title">Geografia</span>
-                            <p class="carousel__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, quisquam? Eligendi asperiores voluptas</p>
-                            <a href="#" class="carousel__link">Ver Más</a>
-                        </article>
-					</div>
-					<div class="carousel__elemento">
-						<img src="./build/img/paisaje4.webp" alt="Harmony Tower">
-						<article class="carousel__parrafo">
-                            <span class="carousel__title">Geografia</span>
-                            <p class="carousel__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, quisquam? Eligendi asperiores voluptas</p>
-                            <a href="#" class="carousel__link">Ver Más</a>
-                        </article>
-					</div>
-	
-					<div class="carousel__elemento">
-						<img src="./build/img/paisaje5.webp" alt="Empire State Building">
-						<article class="carousel__parrafo">
-                            <span class="carousel__title">Geografia</span>
-                            <p class="carousel__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, quisquam? Eligendi asperiores voluptas</p>
-                            <a href="#" class="carousel__link">Ver Más</a>
-                        </article>
-					</div>
-					<div class="carousel__elemento">
-						<img src="./build/img/paisaje6.webp" alt="Harmony Tower">
-						<article class="carousel__parrafo">
-                            <span class="carousel__title">Geografia</span>
-                            <p class="carousel__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, quisquam? Eligendi asperiores voluptas</p>
-                            <a href="#" class="carousel__link">Ver Más</a>
-                        </article>
-					</div>
+					
 					
 				</div>
 				<button aria-label="Anterior" class="carousel__anterior"><svg class="btn__left" viewBox="0 0 512 512"><path  d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm27.5-379.5l-123 123c-4.7 4.7-4.7 12.3 0 17l123 123c7.6 7.6 20.5 2.2 20.5-8.5V133c0-10.7-12.9-16.1-20.5-8.5z" class=""></path></svg></button>

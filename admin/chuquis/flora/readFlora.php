@@ -4,16 +4,13 @@
 //traer datos de costumbres
 $queryFlora = mysqli_query($cnx, "SELECT * FROM flora ORDER BY flora_id DESC");
 
-
 //eliminar flora por id
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $cod = $_POST['flora_cod'];
 
     if($cod){
-
         // query para encontrar por cod
         $queryfloraByCod = mysqli_query($cnx, "SELECT * FROM flora WHERE flora_cod = '$cod'");
-        
         $resultadoQueryByCod  = mysqli_fetch_assoc($queryfloraByCod);
         
         unlink('./mediaBD/mediaChuquis/flora/'.$resultadoQueryByCod['flora_foto']);
@@ -47,32 +44,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    $i = 1;
-                    while($rowFlora = mysqli_fetch_assoc($queryFlora)):
-                        $floraCod = $rowFlora['flora_cod'];
-                        $floraNombre = $rowFlora['flora_nombre'];
-                        $floraTexto = $rowFlora['flora_texto'];
-                        $floraFoto = $rowFlora['flora_foto'];
-                        $floraFecha= $rowFlora['flora_fecha'];
-                ?>
-                <tr>
-                    <td><?php echo $i++; ?></td>
-                    <td><img src="./mediaBD/mediaChuquis/flora/<?php echo $floraFoto; ?>" /></td>
-                    <td><?php echo $floraCod; ?></td>
-                    <td><?php echo $floraNombre; ?></td>
-                    <td><?php echo $floraTexto; ?></td>
-                    <td><?php echo $floraFecha; ?></td>
-                    <td class="table-btn">
-                        <a href="index.php?action=updateFlora&floraCod=<?php echo $floraCod; ?>" class="table-btn__upd"><i class="fas fa-pen-alt"></i>Actualizar</a>
-                        <form action="" method="POST">
-                            <input type="hidden" name="flora_cod" value="<?php echo $floraCod; ?>">
-                            <button  class="table-btn__del"><i class="fas fa-trash"></i>Eliminar</button>
-                           
-                        </form>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
+             <?php
+             $query = $queryFlora;
+             $tabla = [
+                'cod'       => 'flora_cod',
+                'nombre'    => 'flora_nombre',
+                'texto'     => 'flora_texto',
+                'foto'      => 'flora_foto',
+                'fecha'     => 'flora_fecha',
+             ];
+
+             $ruta = 'flora';
+             $rutaActualizar = 'updateFlora&floraCod';
+             $eliminar = 'flora_cod';
+                // imprime tabla
+                readChuquis($query,$tabla,$ruta,$rutaActualizar,$eliminar)
+             ?>
+                    
             </tbody>
         </table>
 

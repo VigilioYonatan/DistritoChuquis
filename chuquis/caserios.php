@@ -5,7 +5,7 @@
 
     $total = $resultadoPaginador['total'];
 
-    $por_pagina = 6;
+    $por_pagina = 12;
     
 
     if(empty($_GET['pagina'])){
@@ -15,6 +15,9 @@
     }
 
     $desde = ($pagina - 1) * $por_pagina;
+    if(isset($_GET['pagina']) && $_GET['pagina'] > $totalPaginas ){
+        header('Location: index.php');
+    }
 
     $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
     // //imagenes costumbre
@@ -34,10 +37,10 @@
 
 <section class="container-wallpaper" id="welcome">
         <div class="container-wallpaper__background"></div>
-    <video class="container-wallpaper__video" src="./admin/mediaBD/mediaChuquis/caserio/<?php echo $caserioVideo; ?>" autoplay muted loop></video>
+    <video class="container-wallpaper__video" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $caserioVideo; ?>" autoplay muted loop></video>
     <div class="wallpaper">
         <picture class="wallpaper-info">
-            <img class="wallpaper-info__img" src="./admin/mediaBD/mediaChuquis/caserio/<?php echo $caserioFoto; ?>" alt="">
+            <img class="wallpaper-info__img" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $caserioFoto; ?>" alt="">
             <div class="wallpaper-info-text">
                 <h2 class="wallpaper-info-text__title">Bienvenido!</h2>
                 <span class="wallpaper-info-text__txt"><?php echo $caserioNombre; ?></span>
@@ -72,7 +75,7 @@
 <?php endif; ?>
 <!-- fin wallpaper -->
 <!-- card -->
-<section class="<?php echo isset($_GET['pagina']) >= 2 ? 'borrarPadding' : 'album-container '; ?>">
+<section class="<?php echo isset($_GET['pagina']) && $_GET['pagina'] >= 2 ? 'borrarPadding' : 'album-container '; ?>">
     <h2 class="album__title">Caserios</h2>
     <div class="album">
     <?php 
@@ -93,24 +96,10 @@
 <!-- paginador -->
 <div class="paginador-container">
         <ul class="paginador">
-        <?php if($pagina != 1): ?>
-            <li class='paginador__list'><a href="chuquis.php?action=caserio&pagina=1"><i class="fas fa-fast-backward"></i></a></li>
-            <li class='paginador__list'><a href="chuquis.php?action=caserio&pagina=<?php echo $pagina-1; ?>"><i class="fas fa-step-backward"></i></a></li>
-        <?php endif; ?>
-         <?php 
-            for ($i=1; $i <= $totalPaginas ; $i++) { 
-                if($i == $pagina){
-                    echo "<li class='paginador__list paginador__list--stop'>$i</li>";
-                }else{
-                    echo "<li class='paginador__list' ><a href='chuquis.php?action=caserio&pagina=$i'>$i</a></li>";
-                }
-            }
-        ?>
-            
-        <?php  if($pagina != $totalPaginas):?>
-            <li class='paginador__list'><a href="chuquis.php?action=caserio&pagina=<?php echo $pagina+1; ?>"><i class="fas fa-step-forward"></i></a></li>
-            <li class='paginador__list'><a href="chuquis.php?action=caserio&pagina=<?php echo $totalPaginas; ?>"><i class="fas fa-fast-forward"></i></a></li>
-        <?php endif; ?>
+        <?php
+            $url = 'caserios';
+             paginador($pagina, $totalPaginas,$url);
+            ?>
         </ul>
     </div>
 </div>

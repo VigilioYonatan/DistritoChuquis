@@ -1,76 +1,35 @@
-<?php require_once './includes/header.php';?>
-<?php
-    //paginador
-    $queryPaginador = mysqli_query($cnx, "SELECT count(*) as total FROM turismo" );
-    $resultadoPaginador = mysqli_fetch_assoc($queryPaginador);
-
-    $total = $resultadoPaginador['total'];
-
-    $por_pagina = 6;
-    
-
-    if(empty($_GET['pagina'])){
-        $pagina = 1;
-    }else{
-        $pagina = $_GET['pagina'];
+<?php require_once './includes/header.php';
+    if(isset($_GET['search_text'])){
+        $buscar = $_GET['search_text'];
+        if(strlen($_GET['search_text']) === 0 ){
+            header('Location:index.php');
+        }
     }
-
-    $desde = ($pagina - 1) * $por_pagina;
-
-    $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el paginador
-    // //imagenes costumbre
-    $queryturismo = mysqli_query($cnx, "SELECT * FROM turismo ORDER BY turismo_id DESC LIMIT $desde,$por_pagina");
-
-    // wallpaper costumbres
-    $turismo = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'CHU-TUR'");
-    $resultadoturismo = mysqli_fetch_assoc($turismo);
-
-    $turismoNombre = $resultadoturismo['chuquis_nombre'];
-    $turismoFoto = $resultadoturismo['chuquis_foto'];
-    $turismoVideo = $resultadoturismo['chuquis_video'];
+    $busquedas = [];
+    $querySearch = mysqli_query($cnx, "SELECT * FROM costumbre where costumbre_nombre LIKE '%$buscar%' ");
+    var_dump($querySearch);
 ?>
-    
-<!-- card -->
-<section class="<?php echo $_GET['pagina'] >= 2 ? 'borrarPadding' : 'album-container '; ?>">
-    <h2 class="album__title">Turismo</h2>
+<section class="borrarPadding">
+    <h2 class="album__title">Se encontró <?php  echo $querySearch -> num_rows; ?> resultados </h2>
     <div class="album">
-    <?php 
-    $tabla =[
-        'nombre' => 'turismo_nombre',
-        'texto'  => 'turismo_texto',
-        'foto'   => 'turismo_foto',
-        'fecha'  => 'turismo_fecha'
-    ];
-
-    $ruta = 'turismo';
-
-    listChuquis($queryturismo, $tabla, $ruta);
-    ?>
+    <?php  while($rowSearch = mysqli_fetch_assoc($querySearch)):
+    
+        $nombre = $rowSearch['costumbre_nombre'];
+        $texto = $rowSearch['costumbre_texto'];
+        $foto = $rowSearch['costumbre_foto'];
+        $fecha = $rowSearch['costumbre_fecha'];
+        ?>
+        
+        <picture class='album-card'>
+                <img class='album-card__img' src='./admin/mediaBD/mediaChuquis/costumbres/<?php echo $foto; ?>' alt='<?php echo $nombre; ?>' title='<?php echo $nombre; ?>'>
+            <div class='card-info'>
+                <h3 class='card-info__title'><?php echo $nombre; ?></h3>
+                <p class='card-info__text'><?php echo $texto; ?></p>
+            <span class='card-info__time'>Publicado: <b> <?php echo $fecha; ?></b></span>
+            </div>
+        </picture>
+        <?php endwhile; ?>
     </div>
 </section>
-<!-- fin card -->
-<!-- paginador -->
-<div class="paginador-container">
-        <ul class="paginador">
-        <?php if($pagina != 1): ?>
-            <li class='paginador__list'><a href="chuquis.php?action=turismo&pagina=1"><i class="fas fa-fast-backward"></i></a></li>
-            <li class='paginador__list'><a href="chuquis.php?action=turismo&pagina=<?php echo $pagina-1; ?>"><i class="fas fa-step-backward"></i></a></li>
-        <?php endif; ?>
-         <?php 
-            for ($i=1; $i <= $totalPaginas ; $i++) { 
-                if($i == $pagina){
-                    echo "<li class='paginador__list paginador__list--stop'>$i</li>";
-                }else{
-                    echo "<li class='paginador__list' ><a href='chuquis.php?action=turismo&pagina=$i'>$i</a></li>";
-                }
-            }
-        ?>
-            
-        <?php  if($pagina != $totalPaginas):?>
-            <li class='paginador__list'><a href="chuquis.php?action=turismo&pagina=<?php echo $pagina+1; ?>"><i class="fas fa-step-forward"></i></a></li>
-            <li class='paginador__list'><a href="chuquis.php?action=turismo&pagina=<?php echo $totalPaginas; ?>"><i class="fas fa-fast-forward"></i></a></li>
-        <?php endif; ?>
-        </ul>
-    </div>
-</div>
+
 <?php require_once './includes/footer.php';

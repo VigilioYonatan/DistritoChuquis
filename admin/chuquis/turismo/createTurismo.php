@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         move_uploaded_file($turismoFoto['tmp_name'], $carpetaMediaBD.$turismoImagenes.$nombreImagen); 
 
 
-        $chuquisCod = 'CHU-FAU';
+        $chuquisCod = 'CHU-TUR';
         $codigoTurismo = date('Y'.'m'.'d'.'s');
         $fechaTurismo = date('Y/m/d');
 
