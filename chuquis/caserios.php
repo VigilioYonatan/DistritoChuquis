@@ -79,9 +79,8 @@
     <h2 class="album__title">Caserios</h2>
     <div class="album">
     <?php 
-    $ruta = 'caserio';
 
-    listChuquis($querycaserio, $ruta);
+    listChuquis($querycaserio);
     ?>
     </div>
 </section>
@@ -90,7 +89,7 @@
 <div class="paginador-container">
         <ul class="paginador">
         <?php
-            $url = 'caserios';
+            $url = 'chuquis.php?action=caserios';
              paginador($pagina, $totalPaginas,$url);
             ?>
         </ul>

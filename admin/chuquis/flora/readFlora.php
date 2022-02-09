@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryFlora;
-             $ruta = 'flora';
+             $ruta = 'mediaChuquis/flora';
              $rutaActualizar = 'updateFlora&floraCod';
              $eliminar = 'flora_cod';
                 // imprime tabla

@@ -30,10 +30,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-CAR';
-        $codigoCarnavales = date('Y'.'m'.'d'.'s');
+        $codigoCarnavales = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaCarnavales = date('Y/m/d');
+        $ruta = 'mediaChuquis/carnavales';
 
-        $addCarnavales  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod) VALUES ('$codigoCarnavales','$carnavalesNombre','$carnavalesTexto', '$nombreImagen','$fechaCarnavales', '$chuquisCod')");
+        $addCarnavales  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod, ruta) VALUES ('$codigoCarnavales','$carnavalesNombre','$carnavalesTexto', '$nombreImagen','$fechaCarnavales', '$chuquisCod', $ruta)");
       var_dump($addCarnavales);
         
         if($addCarnavales){
@@ -46,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 ?>
 <section class="configuracion">
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
-        <h3 class="configuracion-title">Sitios Arqueológicos</h3>
+        <h3 class="configuracion-title">Carnavales</h3>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl"  for="carnavales_nombre">Titulo de la imagen:</label>
             <input class="configuracion-input" type="text" value="<?php echo $carnavalesNombre; ?>" name="carnavales_nombre" placeholder="Titulo">

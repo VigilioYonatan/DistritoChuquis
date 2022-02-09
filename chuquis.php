@@ -1,5 +1,7 @@
 <?php require_once './includes/header.php'; 
 require_once 'funciones.php';
+
+
 if(isset($_GET['action'])){
         $action = $_GET['action'];
       }else{
@@ -41,7 +43,6 @@ if(isset($_GET['action'])){
           # code...
           break;
       }
+      ?>
 
-
-
- require_once './includes/footer.php' ?>
+ <?php require_once './includes/footer.php' ?>

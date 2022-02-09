@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $querySitiosarqueologicos;
-             $ruta = 'sitiosarqueologicos';
+             $ruta = 'mediaChuquis/turismo';
              $rutaActualizar = 'updateSitiosarqueologicos&sitiosarqueologicosCod';
              $eliminar = 'sitiosarqueologicos_cod';
                 // imprime tabla

@@ -30,10 +30,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-CAS';
-        $codigoCaserio = date('Y'.'m'.'d'.'s');
+        $codigoCaserio = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaCaserio = date('Y/m/d');
-
-        $addCaserio  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod) VALUES ('$codigoCaserio','$caserioNombre','$caserioTexto', '$nombreImagen','$fechaCaserio', '$chuquisCod')");
+        $ruta = 'mediaChuquis/caserio';
+        $addCaserio  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod,ruta) VALUES ('$codigoCaserio','$caserioNombre','$caserioTexto', '$nombreImagen','$fechaCaserio', '$chuquisCod', '$ruta')");
       
         
         if($addCaserio){

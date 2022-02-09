@@ -123,6 +123,10 @@
                         &:active{
                             background-color: var.$naranja;
                         }
+
+                        &:hover{
+                            background-color: var.$naranja;
+                        }
                     }
 
                     
@@ -136,6 +140,7 @@
                 
             }
 
+
             
         }
 
@@ -143,6 +148,10 @@
         
     }
 
+    .less{
+        width: 150%;
+        bottom: -3.2rem;
+    }
     &-responsive{
         display: none;
         background-color: transparent;

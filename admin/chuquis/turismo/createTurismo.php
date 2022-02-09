@@ -30,10 +30,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-TUR';
-        $codigoTurismo = date('Y'.'m'.'d'.'s');
+        $codigoTurismo = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaTurismo = date('Y/m/d');
+        $ruta = 'mediaChuquis/turismo';
 
-        $addTurismo  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod) VALUES ('$codigoTurismo','$turismoNombre','$turismoTexto', '$nombreImagen','$fechaTurismo', '$chuquisCod')");
+        $addTurismo  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod) VALUES ('$codigoTurismo','$turismoNombre','$turismoTexto', '$nombreImagen','$fechaTurismo', '$chuquisCod','$ruta')");
       
         
         if($addTurismo){

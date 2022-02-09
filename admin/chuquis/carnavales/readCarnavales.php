@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryCarnavales;
-             $ruta = 'carnavales';
+             $ruta = 'mediaChuquis/carnavales';
              $rutaActualizar = 'updateCarnavales&carnavalesCod';
              $eliminar = 'carnavales_cod';
                 // imprime tabla

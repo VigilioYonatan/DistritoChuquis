@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
              <?php
              $query = $queryFauna;
 
-             $ruta = 'fauna';
+             $ruta = 'mediaChuquis/fauna';
              $rutaActualizar = 'updateFauna&faunaCod';
              $eliminar = 'fauna_cod';
                 // imprime tabla

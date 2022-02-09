@@ -80,9 +80,7 @@
     <h2 class="album__title">Flora</h2>
     <div class="album">
     <?php 
-    $ruta = 'flora';
-
-    listChuquis($queryflora, $ruta);
+    listChuquis($queryflora);
     ?>
     </div>
 </section>
@@ -91,7 +89,7 @@
 <div class="paginador-container">
         <ul class="paginador">
         <?php
-            $url = 'flora';
+            $url = 'chuquis.php?action=flora';
              paginador($pagina, $totalPaginas,$url);
             ?>
         </ul>

@@ -35,7 +35,12 @@ session_start();
                         <li class="navbar-menu-list-submenu-list"><a class="navbar-menu-list-submenu-list__link" href="chuquis.php?action=sitiosarqueologicos">Sitios Arquelógicos</a></li>                      
                     </ul>
                 </li>
-                <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Tingo Maria</a></li>
+                <li class="navbar-menu-list navbar-menu-list-linked" id="tingomaria"><span  class="navbar-menu-list__link" >Tingo Maria</span>
+                    <ul class="navbar-menu-list-submenu less">
+                            <li class="navbar-menu-list-submenu-list" ><a class="navbar-menu-list-submenu-list__link" href="tingomaria.php?action=lugaresTuristicos">Lugares Turísticos</a></li>
+                     </ul>
+                </li>
+              
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Blog Personal</a></li>
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Kuyaiki Photography</a></li>
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link"href="">Soporte</a></li>

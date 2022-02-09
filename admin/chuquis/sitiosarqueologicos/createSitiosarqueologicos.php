@@ -30,11 +30,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-STA';
-        $codigoSitiosarqueologicos = date('Y'.'m'.'d'.'s');
+        $codigoSitiosarqueologicos = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaSitiosarqueologicos = date('Y/m/d');
-
-        $addSitiosarqueologicos  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoSitiosarqueologicos','$sitiosarqueologicosNombre','$sitiosarqueologicosTexto', '$nombreImagen','$fechaSitiosarqueologicos', '$chuquisCod')");
-      var_dump($addSitiosarqueologicos);
+        $ruta = 'mediaChuquis/sitiosarqueologicos';
+        $addSitiosarqueologicos  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod, ruta) VALUES ('$codigoSitiosarqueologicos','$sitiosarqueologicosNombre','$sitiosarqueologicosTexto', '$nombreImagen','$fechaSitiosarqueologicos', '$chuquisCod', '$ruta')");
+     
         
         if($addSitiosarqueologicos){
             header('Location: index.php?action=createSitiosarqueologicos&agregado=1');

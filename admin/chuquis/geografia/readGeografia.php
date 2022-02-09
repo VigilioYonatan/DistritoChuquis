@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryGeografia;
-             $ruta = 'geografia';
+             $ruta = 'mediaChuquis/geografia';
              $rutaActualizar = 'updateGeografia&geografiaCod';
              $eliminar = 'geografia_cod';
                 // imprime tabla

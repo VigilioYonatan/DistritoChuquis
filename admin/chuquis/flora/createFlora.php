@@ -30,10 +30,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-FLO';
-        $codigoFlora = date('Y'.'m'.'d'.'s');
+        $codigoFlora = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaFlora = date('Y/m/d');
-
-        $addFlora  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoFlora','$floraNombre','$floraTexto', '$nombreImagen','$fechaFlora', '$chuquisCod')");
+        $ruta = 'mediaChuquis/flora';
+        $addFlora  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod, ruta) VALUES ('$codigoFlora','$floraNombre','$floraTexto', '$nombreImagen','$fechaFlora', '$chuquisCod', '$ruta')");
       
         
         if($addFlora){

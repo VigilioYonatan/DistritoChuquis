@@ -30,12 +30,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-COS';
-        $codigoCostumbres = date('Y'.'m'.'d'.'s');
+        $codigoCostumbres = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaCostumbres = date('Y/m/d');
-
-        $addCostumbres  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoCostumbres','$costumbresNombre','$costumbresTexto', '$nombreImagen','$fechaCostumbres', '$chuquisCod')");
+        $ruta = 'mediaChuquis/costumbres';
+        $addCostumbres  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod, ruta) VALUES ('$codigoCostumbres','$costumbresNombre','$costumbresTexto', '$nombreImagen','$fechaCostumbres', '$chuquisCod','$ruta')");
       
-        
+        var_dump( $addCostumbres);
         if($addCostumbres){
             header('Location: index.php?action=createCostumbres&agregado=1');
         }

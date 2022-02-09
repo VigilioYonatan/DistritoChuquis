@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryCaserio;
-             $ruta = 'caserio';
+             $ruta = 'mediaChuquis/caserio';
              $rutaActualizar = 'updateCaserio&caserioCod';
              $eliminar = 'caserio_cod';
                 // imprime tabla

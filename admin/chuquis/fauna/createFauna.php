@@ -28,10 +28,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-FAU';
-        $codigoFauna = date('Y'.'m'.'d'.'s');
+        $codigoFauna = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaFauna = date('Y/m/d');
+        $ruta = 'mediaChuquis/fauna';
 
-        $addFauna  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod) VALUES ('$codigoFauna','$faunaNombre','$faunaTexto', '$nombreImagen','$fechaFauna', '$chuquisCod')");
+        $addFauna  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha, ChuquisCod, ruta) VALUES ('$codigoFauna','$faunaNombre','$faunaTexto', '$nombreImagen','$fechaFauna', '$chuquisCod', '$ruta')");
       
         
         if($addFauna){

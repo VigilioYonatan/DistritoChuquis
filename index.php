@@ -17,7 +17,11 @@ $inicioYoutube = $resultadoQuery['inicio_youtube'];
 
 // query chuquis
 
-$queryChuquis = mysqli_query($cnx, "SELECT * FROM chuquis");
+$queryChuquis = mysqli_query($cnx, "SELECT * FROM chuquis LIMIT 8");
+
+// query chuquis_tables by id most recent
+
+$queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC LIMIT 9");
 
 
 ?>
@@ -65,60 +69,22 @@ $queryChuquis = mysqli_query($cnx, "SELECT * FROM chuquis");
     <section class="post-container" id="postRecientes">
         <span class="post__title">Post Recientes</span>
         <div class="post-images">
-            <picture class="post-imagen">
+            <?php while ($rowRecent = mysqli_fetch_assoc($queryRecent)):
+                        $recentNombre   =   $rowRecent['nombre'];
+                        $recentTexto    =   $rowRecent['texto'];
+                        $recentFoto     =   $rowRecent['foto'];
+                        $recentRuta     =   $rowRecent['ruta'];
+                 ?>
+            <picture class="post-imagen animation-initial">
                 <div class="post-imagen-img">
-                    <img class="post-imagen-img__img" src="./build/img/paisaje1.webp" alt="">
+                    <img class="post-imagen-img__img" src="./admin/mediaBD/<?php echo $recentRuta; ?>/<?php echo $recentFoto; ?>" alt="">
                     <div class="background">
-                        <p class="background__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo aperiam voluptatibus, facere cumque, rerum necessitatibus molestias quos tenetur magni laboriosam, ipsum dicta. Ipsum natus aperiam blanditiis perspiciatis voluptatibus vitae.</p>
+                        <p class="background__txt"><?php echo $recentTexto; ?></p>
                     </div>
                 </div>        
-                <span class="post-imagen__title">Mexico: A Culinary Journey</span> 
+                <span class="post-imagen__title"><?php echo $recentNombre; ?></span> 
             </picture>
-            <picture class="post-imagen">
-                <div class="post-imagen-img">
-                    <img class="post-imagen-img__img" src="./build/img/paisaje2.webp" alt="">
-                    <div class="background">
-                        <p class="background__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo aperiam voluptatibus, facere cumque, rerum necessitatibus molestias quos tenetur magni laboriosam, ipsum dicta. Ipsum natus aperiam blanditiis perspiciatis voluptatibus vitae.</p>
-                    </div>
-                </div>        
-                <span class="post-imagen__title">Mexico: A Culinary Journey</span> 
-            </picture>
-            <picture class="post-imagen">
-                <div class="post-imagen-img">
-                    <img class="post-imagen-img__img" src="./build/img/paisaje3.webp" alt="">
-                    <div class="background">
-                        <p class="background__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo aperiam voluptatibus, facere cumque, rerum necessitatibus molestias quos tenetur magni laboriosam, ipsum dicta. Ipsum natus aperiam blanditiis perspiciatis voluptatibus vitae.</p>
-                    </div>
-                </div>        
-                <span class="post-imagen__title">Mexico: A Culinary Journey</span> 
-            </picture>
-            <picture class="post-imagen">
-                <div class="post-imagen-img">
-                    <img class="post-imagen-img__img" src="./build/img/paisaje4.webp" alt="">
-                    <div class="background">
-                        <p class="background__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo aperiam voluptatibus, facere cumque, rerum necessitatibus molestias quos tenetur magni laboriosam, ipsum dicta. Ipsum natus aperiam blanditiis perspiciatis voluptatibus vitae.</p>
-                    </div>
-                </div>        
-                <span class="post-imagen__title">Mexico: A Culinary Journey</span> 
-            </picture>
-            <picture class="post-imagen">
-                <div class="post-imagen-img">
-                    <img class="post-imagen-img__img" src="./build/img/paisaje5.webp" alt="">
-                    <div class="background">
-                        <p class="background__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo aperiam voluptatibus, facere cumque, rerum necessitatibus molestias quos tenetur magni laboriosam, ipsum dicta. Ipsum natus aperiam blanditiis perspiciatis voluptatibus vitae.</p>
-                    </div>
-                </div>        
-                <span class="post-imagen__title">Mexico: A Culinary Journey</span> 
-            </picture>
-            <picture class="post-imagen">
-                <div class="post-imagen-img">
-                    <img class="post-imagen-img__img" src="./build/img//paisaje6.webp" alt="">
-                    <div class="background">
-                        <p class="background__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo aperiam voluptatibus, facere cumque, rerum necessitatibus molestias quos tenetur magni laboriosam, ipsum dicta. Ipsum natus aperiam blanditiis perspiciatis voluptatibus vitae.</p>
-                    </div>
-                </div>        
-                <span class="post-imagen__title">Mexico: A Culinary Journey</span> 
-            </picture>
+            <?php endwhile; ?>
         </div>   
     </section>
     <!-- fin post -->

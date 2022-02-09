@@ -61,7 +61,7 @@ function readChuquis($query,$ruta,$rutaActualizar,$eliminar){
         $i++;
         echo "<tr>
                 <td>$i</td>
-                <td><img src='./mediaBD/mediaChuquis/$ruta/$foto'/></td>
+                <td><img src='./mediaBD/$ruta/$foto'/></td>
                 <td>$cod</td>
                 <td>$nombre</td>
                 <td>$texto</td>

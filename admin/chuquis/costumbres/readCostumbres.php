@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryCostumbre;
-             $ruta = 'costumbres';
+             $ruta = 'mediaChuquis/costumbres';
              $rutaActualizar = 'updateCostumbres&CostumbreCod';
              $eliminar = 'costumbre_cod';
                 // imprime tabla

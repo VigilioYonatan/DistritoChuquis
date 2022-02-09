@@ -63,7 +63,7 @@ if($userQuery -> num_rows){
             </div>
             <div class="link">
               <span class="link-title">Tingo Maria</span>
-       
+                <a href="index.php?action=readLugaresTuristicos">Lugares Turisticos</a>
             </div>
             <div class="link">
               <span class="link-title">Blog Personal</span>
@@ -240,6 +240,24 @@ if($userQuery -> num_rows){
 
         case 'updSitiosarqueologicos':
           require_once 'chuquis/sitiosarqueologicos/updSitiosarqueologicos.php';
+          break;
+
+          //tingo Maria
+        case 'readLugaresTuristicos':
+          require_once 'tingomaria/lugaresTuristicos/readLugaresTuristicos.php';
+          break;
+        
+        
+        case 'createLugaresTuristicos':
+          require_once 'tingomaria/lugaresTuristicos/createLugaresTuristicos.php';
+          break;
+        
+        case 'updateLugaresTuristicos':
+          require_once 'tingomaria/lugaresTuristicos/updateLugaresTuristicos.php';
+          break;
+        
+        case 'updLugaresTuristicos':
+          require_once 'tingomaria/lugaresTuristicos/updLugaresTuristicos.php';
           break;
         
         default:

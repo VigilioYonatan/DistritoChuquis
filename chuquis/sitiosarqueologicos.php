@@ -80,10 +80,7 @@
     <h2 class="album__title">Sitios Arqueológicos</h2>
     <div class="album">
     <?php 
-
-    $ruta = 'sitiosarqueologicos';
-
-    listChuquis($querysitiosarqueologicos, $ruta);
+    listChuquis($querysitiosarqueologicos);
     ?>
     </div>
 </section>
@@ -92,7 +89,7 @@
 <div class="paginador-container">
         <ul class="paginador">
         <?php
-            $url = 'sitiosarqueologicos';
+            $url = 'chuquis.php?action=sitiosarqueologicos';
              paginador($pagina, $totalPaginas,$url);
             ?>
         </ul>

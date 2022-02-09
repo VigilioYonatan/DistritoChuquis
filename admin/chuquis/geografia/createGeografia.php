@@ -30,10 +30,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
         $chuquisCod = 'CHU-GEO';
-        $codigoGeografia = date('Y'.'m'.'d'.'s');
+        $codigoGeografia = strtotime(date('c')).date('ymd'); // codigo generador
         $fechaGeografia = date('Y/m/d');
-
-        $addGeografia  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha,ChuquisCod) VALUES ('$codigoGeografia','$geografiaNombre','$geografiaTexto', '$nombreImagen','$fechaGeografia', '$chuquisCod')");
+        $ruta = 'mediaChuquis/geografia';
+        $addGeografia  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto,fecha,ChuquisCod, ruta) VALUES ('$codigoGeografia','$geografiaNombre','$geografiaTexto', '$nombreImagen','$fechaGeografia', '$chuquisCod', '$ruta')");
       
         
         if($addGeografia){
