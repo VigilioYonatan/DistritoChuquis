@@ -42,7 +42,7 @@ session_start();
                 </li>
               
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link" href="blog.php">Blog Personal</a></li>
-                <li class="navbar-menu-list"><a  class="navbar-menu-list__link" href="">Kuyaiki Photography</a></li>
+                <li class="navbar-menu-list"><a  class="navbar-menu-list__link" href="kuyaiki.php">Kuyaiki Photography</a></li>
                 <li class="navbar-menu-list"><a  class="navbar-menu-list__link" href="">Soporte</a></li>
             </ul>
             <button class="navbar-responsive" id="menu-hamburguer"><i class="fas fa-bars navbar-responsive__ico"></i></button>

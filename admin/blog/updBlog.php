@@ -5,15 +5,19 @@ $errores = [];
 $queryBlog = mysqli_query($cnx, "SELECT * FROM chuquis WHERE chuquis_cod = 'BLOG'");
 $resultadoQuery = mysqli_fetch_assoc($queryBlog);
 
-$blogFoto = $resultadoQuery['chuquis_foto'];
+
 $blogWallpaper = $resultadoQuery['chuquis_video'];
 $blogTexto= $resultadoQuery['chuquis_texto'];
+$blogNombre= $resultadoQuery['chuquis_nombre'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $blog_welcome =    $_FILES['blog_welcome'];
+
     $blog_wallpaper =    $_FILES['blog_wallpaper'];
     $blog_texto =    $_POST['blog_texto'];
+    $blog_nombre =    $_POST['blog_nombre'];
+
+  
   
     
     if(empty($errores)){
@@ -53,8 +57,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nombreVideo = $blogWallpaper;
         }
       
-        $updateblog = mysqli_query($cnx, "UPDATE chuquis SET chuquis_texto = '$blog_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'BLOG'"); 
-
+        $updateblog = mysqli_query($cnx, "UPDATE chuquis SET chuquis_nombre = '$blog_nombre', chuquis_texto = '$blog_texto', chuquis_foto = '$nombreImagen', chuquis_video = '$nombreVideo' WHERE chuquis_cod = 'BLOG'"); 
+  
         if($updateblog){
             header('Location: index.php?action=updBlog&actualizado=1');
         }
@@ -67,18 +71,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <section class="configuracion">
 
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
-        <h3 class="configuracion-title"> Cambiar Welcome & Wallpaper Blog</h2>
+        <h3 class="configuracion-title"> Cambiar titulo & Wallpaper Blog</h2>
+
         <div class="configuracion-inp center">
-            <label class="configuracion-lbl-file"  for="blog_welcome"><i class="fas fa-image"></i> Foto Welcome</label>
-            <input  class="configuracion-file" type="file" accept="image/*" name="blog_welcome" id="blog_welcome">
-            <img width="100px" src="./mediaBD/mediaChuquis/chuquis/<?php echo $blogFoto; ?>" alt="">
-        </div>
-        <div class="configuracion-inp center">
-            <label class="configuracion-lbl-file"  for="blog_wallpaper"><i class="fas fa-image"></i> imagen WALLPAPER</label>
+            <label class="configuracion-lbl-file"  for="blog_wallpaper"><i class="fas fa-video"></i> Video WALLPAPER</label>
             <input  class="configuracion-file" type="file" name="blog_wallpaper" accept="imagen/*" id="blog_wallpaper">
-            <img width="200px" src="./mediaBD/mediaChuquis/chuquis/<?php echo $blogWallpaper; ?>" alt="">
 
         </div>
+        <div class="configuracion-inp center">
+            <label class="configuracion-lbl" for="blog_nombre"> titulo de Blog</label>
+            <input class="configuracion-input" type="text" value="<?php echo $blogNombre; ?>" name="blog_nombre" placeholder="Titulo">        </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl" for="blog_texto"> Texto de Blog</label>
             <textarea name="blog_texto" id="" cols="20" rows="5"><?php echo $blogTexto; ?></textarea>

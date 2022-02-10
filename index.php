@@ -74,6 +74,7 @@ $queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC
                         $recentTexto    =   $rowRecent['texto'];
                         $recentFoto     =   $rowRecent['foto'];
                         $recentRuta     =   $rowRecent['ruta'];
+                        $recentCod    =   $rowRecent['cod'];
                  ?>
             <picture class="post-imagen animation-initial">
                 <div class="post-imagen-img">

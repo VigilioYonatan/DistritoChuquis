@@ -71,7 +71,7 @@ if($userQuery -> num_rows){
             </div>
             <div class="link">
               <span class="link-title">Kuyaiki</span>
-     
+                <a href="index.php?action=readKuyaiki">Kuyaiki</a>
             </div>
             <div class="link">
               <span class="link-title">Soporte</span>
@@ -276,6 +276,23 @@ if($userQuery -> num_rows){
         
         case 'updBlog':
           require_once 'blog/updBlog.php';
+          break;
+          //blog
+        case 'readKuyaiki':
+          require_once 'kuyaiki/readKuyaiki.php';
+          break;
+        
+        
+        case 'createKuyaiki':
+          require_once 'kuyaiki/createKuyaiki.php';
+          break;
+        
+        case 'updateKuyaiki':
+          require_once 'kuyaiki/updateKuyaiki.php';
+          break;
+        
+        case 'updKuyaiki':
+          require_once 'kuyaiki/updKuyaiki.php';
           break;
         
         default:
