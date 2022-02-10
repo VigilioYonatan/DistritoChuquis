@@ -34,8 +34,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $fechaCarnavales = date('Y/m/d');
         $ruta = 'mediaChuquis/carnavales';
 
-        $addCarnavales  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod, ruta) VALUES ('$codigoCarnavales','$carnavalesNombre','$carnavalesTexto', '$nombreImagen','$fechaCarnavales', '$chuquisCod', $ruta)");
-      var_dump($addCarnavales);
+        $addCarnavales  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod, ruta) VALUES ('$codigoCarnavales','$carnavalesNombre','$carnavalesTexto', '$nombreImagen','$fechaCarnavales', '$chuquisCod', '$ruta')");
+
         
         if($addCarnavales){
             header('Location: index.php?action=createCarnavales&agregado=1');

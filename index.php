@@ -2,19 +2,6 @@
    
 <?php require_once './includes/header.php';
 
-
-
-//query INicio
-$queryInicio = mysqli_query($cnx, "SELECT * FROM inicio");
-$resultadoQuery = mysqli_fetch_assoc($queryInicio);
-
-$inicioWelcome = $resultadoQuery['inicio_welcomeFoto'];
-$inicioWallpaper = $resultadoQuery['inicio_welcomeWallpaper'];
-$inicioFacebook = $resultadoQuery['inicio_facebook'];
-$inicioWhatsapp = $resultadoQuery['inicio_whatsapp'];
-$inicioYoutube = $resultadoQuery['inicio_youtube'];
-
-
 // query chuquis
 
 $queryChuquis = mysqli_query($cnx, "SELECT * FROM chuquis LIMIT 8");

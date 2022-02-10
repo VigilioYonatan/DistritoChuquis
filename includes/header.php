@@ -1,5 +1,15 @@
 <?php require_once './includes/db.php';
 session_start();
+
+//query INicio
+$queryInicio = mysqli_query($cnx, "SELECT * FROM inicio");
+$resultadoQuery = mysqli_fetch_assoc($queryInicio);
+
+$inicioWelcome = $resultadoQuery['inicio_welcomeFoto'];
+$inicioWallpaper = $resultadoQuery['inicio_welcomeWallpaper'];
+$inicioFacebook = $resultadoQuery['inicio_facebook'];
+$inicioWhatsapp = $resultadoQuery['inicio_whatsapp'];
+$inicioYoutube = $resultadoQuery['inicio_youtube'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

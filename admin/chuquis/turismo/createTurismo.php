@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $fechaTurismo = date('Y/m/d');
         $ruta = 'mediaChuquis/turismo';
 
-        $addTurismo  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod) VALUES ('$codigoTurismo','$turismoNombre','$turismoTexto', '$nombreImagen','$fechaTurismo', '$chuquisCod','$ruta')");
+        $addTurismo  = mysqli_query($cnx, "INSERT INTO chuquis_tables (cod, nombre, texto, foto, fecha, ChuquisCod, ruta) VALUES ('$codigoTurismo','$turismoNombre','$turismoTexto', '$nombreImagen','$fechaTurismo', '$chuquisCod','$ruta')");
       
         
         if($addTurismo){
