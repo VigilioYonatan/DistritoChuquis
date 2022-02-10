@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <tbody>
              <?php
              $query = $queryTurismo;
-             $ruta = 'turismo';
+             $ruta = 'mediaChuquis/turismo';
              $rutaActualizar = 'updateTurismo&turismoCod';
              $eliminar = 'turismo_cod';
                 // imprime tabla

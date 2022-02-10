@@ -21,7 +21,7 @@ $queryChuquis = mysqli_query($cnx, "SELECT * FROM chuquis LIMIT 8");
 
 // query chuquis_tables by id most recent
 
-$queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC LIMIT 9");
+$queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC LIMIT 6");
 
 
 ?>

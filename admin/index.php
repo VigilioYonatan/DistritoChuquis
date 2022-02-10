@@ -67,7 +67,7 @@ if($userQuery -> num_rows){
             </div>
             <div class="link">
               <span class="link-title">Blog Personal</span>
- 
+                <a href="index.php?action=readBlog">Blog</a>
             </div>
             <div class="link">
               <span class="link-title">Kuyaiki</span>
@@ -258,6 +258,24 @@ if($userQuery -> num_rows){
         
         case 'updLugaresTuristicos':
           require_once 'tingomaria/lugaresTuristicos/updLugaresTuristicos.php';
+          break;
+
+          //blog
+        case 'readBlog':
+          require_once 'blog/readBlog.php';
+          break;
+        
+        
+        case 'createBlog':
+          require_once 'blog/createBlog.php';
+          break;
+        
+        case 'updateBlog':
+          require_once 'blog/updateBlog.php';
+          break;
+        
+        case 'updBlog':
+          require_once 'blog/updBlog.php';
           break;
         
         default:
