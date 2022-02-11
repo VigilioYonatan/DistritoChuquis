@@ -67,7 +67,7 @@
             &__txt{
                 margin-top: .8rem;
                 font-family: var.$light;
-                
+                font-size: 1rem;
             }
         }
     }
@@ -141,7 +141,7 @@
                 font-family: var.$light;
                 font-size: 1rem;
                 color: var.$blanco;
-                text-align: center;
+                // text-align: center;
                 margin: 0;
                 padding: .5em 0;
             }

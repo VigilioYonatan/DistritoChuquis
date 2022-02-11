@@ -78,20 +78,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <label for="">Correo Electronico:</label>
             <input class="login__inp" type="text" name="user_correo" placeholder="Nombre de Usuario" value="<?php echo $userCorreo; ?>">
             <?php if(isset($errores['correoVacio'])):?>
-                <span><?php echo $errores['correoVacio']; ?></span>
+                <span  class="error-process"><?php echo $errores['correoVacio']; ?></span>
             <?php endif; ?>
             <?php if(isset($errores['correoMal']) && !isset($errores['correoVacio'])):?>
-                <span><?php echo $errores['correoMal']; ?></span>
+                <span  class="error-process"><?php echo $errores['correoMal']; ?></span>
             <?php endif; ?>
         </div>
         <div class="login">
             <label for="">Contraseña:</label>
             <input  class="login__inp" type="password" name="user_password" placeholder="Contraseña">
             <?php if(isset($errores['passwordVacio'])):?>
-                <span><?php echo $errores['passwordVacio']; ?></span>
+                <span  class="error-process"><?php echo $errores['passwordVacio']; ?></span>
             <?php endif; ?>
             <?php if(!isset($errores['passwordVacio']) && isset($errores['passwordMal'])):?>
-                <span><?php echo $errores['passwordMal']; ?></span>
+                <span  class="error-process"><?php echo $errores['passwordMal']; ?></span>
             <?php endif; ?>
         </div>
         <input class="login__btn" type="submit" value="Ingresar">

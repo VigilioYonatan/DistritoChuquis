@@ -90,7 +90,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <section class="configuracion">
 
     <form action="" class="configuracion-form" method="POST" enctype="multipart/form-data">
-        <h3 class="configuracion-title"> Cambiar Welcome & Wallpaper</h2>
+        <h3 class="configuracion-title"> Cambiar Welcome & Wallpaper INICIO</h2>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl-file"  for="inicio_welcome"><i class="fas fa-image"></i> Foto Welcome</label>
             <input  class="configuracion-file" type="file" accept="image/*" name="inicio_welcome" id="inicio_welcome">

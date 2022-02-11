@@ -5,7 +5,7 @@ require_once './funciones.php';
 session_start();
 
 //obtener Datos de usuario
-$userCod = $_SESSION['userCod'];
+$userCod = $_SESSION['userCod'] ?? null;
 
 $userQuery = mysqli_query($cnx, "SELECT * FROM users WHERE user_cod = '$userCod'");
 
@@ -41,8 +41,8 @@ if($userQuery -> num_rows){
       <div class="settings">
         <div class="settings-links">
           <div class="links-image">
-            <a href="#"><img src="./mediaBD/mediaUsers/<?php echo $userFoto; ?>" alt=""></a>
-            <span><?php echo $userNombre; ?></span>
+            <a href="#"><img src="./mediaBD/mediaUsers/<?php echo isset($userFoto) ? $userFoto : ''; ?>" alt=""></a>
+            <span><?php echo isset($userNombre) ? $userNombre : ''; ?></span>
           </div>
           <section class="links-link">
             <div class="link">
@@ -123,6 +123,10 @@ if($userQuery -> num_rows){
           require_once 'chuquis/costumbres/updCostumbres.php';
           break;
 
+        case 'destacadoCostumbres':
+          require_once 'chuquis/costumbres/destacadoCostumbres.php';
+          break;
+
           // chuquis-flora
         case 'createFlora':
           require_once 'chuquis/flora/createFlora.php';
@@ -140,6 +144,12 @@ if($userQuery -> num_rows){
           require_once 'chuquis/flora/updFlora.php';
           break;
 
+        case 'destacadoFlora':
+          require_once 'chuquis/flora/destacadoFlora.php';
+          break;
+
+      
+
           // chuquis-fauna
         case 'createFauna':
           require_once 'chuquis/fauna/createFauna.php';
@@ -155,6 +165,10 @@ if($userQuery -> num_rows){
 
         case 'updFauna':
           require_once 'chuquis/fauna/updFauna.php';
+          break;
+
+        case 'destacadoFauna':
+          require_once 'chuquis/fauna/destacadoFauna.php';
           break;
         
           // chuquis-turismo
@@ -174,6 +188,11 @@ if($userQuery -> num_rows){
           require_once 'chuquis/turismo/updTurismo.php';
           break;
 
+          case 'destacadoTurismo':
+            require_once 'chuquis/turismo/destacadoTurismo.php';
+            break;
+  
+
           // chuquis-caserio
         case 'createCaserio':
           require_once 'chuquis/caserio/createCaserio.php';
@@ -189,6 +208,9 @@ if($userQuery -> num_rows){
 
         case 'updCaserio':
           require_once 'chuquis/caserio/updCaserio.php';
+          break;
+        case 'destacadoCaserio':
+          require_once 'chuquis/caserio/destacadoCaserio.php';
           break;
 
           // chuquis-geografia
@@ -208,6 +230,10 @@ if($userQuery -> num_rows){
           require_once 'chuquis/geografia/updGeografia.php';
           break;
 
+        case 'destacadoGeografia':
+          require_once 'chuquis/geografia/destacadoGeografia.php';
+          break;
+
           // chuquis-carnavales
         case 'createCarnavales':
           require_once 'chuquis/carnavales/createCarnavales.php';
@@ -223,6 +249,10 @@ if($userQuery -> num_rows){
 
         case 'updCarnavales':
           require_once 'chuquis/carnavales/updCarnavales.php';
+          break;
+
+        case 'destacadoCarnavales':
+          require_once 'chuquis/carnavales/destacadoCarnavales.php';
           break;
         
           // chuquis-sitiosArqueologicos
@@ -240,6 +270,10 @@ if($userQuery -> num_rows){
 
         case 'updSitiosarqueologicos':
           require_once 'chuquis/sitiosarqueologicos/updSitiosarqueologicos.php';
+          break;
+
+        case 'destacadoSitiosarqueologicos':
+          require_once 'chuquis/sitiosarqueologicos/destacadoSitiosarqueologicos.php';
           break;
 
           //tingo Maria
@@ -260,6 +294,7 @@ if($userQuery -> num_rows){
           require_once 'tingomaria/lugaresTuristicos/updLugaresTuristicos.php';
           break;
 
+        
           //blog
         case 'readBlog':
           require_once 'blog/readBlog.php';

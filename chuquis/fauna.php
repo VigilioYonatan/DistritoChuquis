@@ -49,27 +49,17 @@
         </picture>
         <article class="wallpaper-about">
             <div class="about">     
-                <h2 class="about__title">Imagen Destacado</h2>
-                <div class="about-new">
-                    <img  class="about-new__img" src="./build/img/danzaHuanuco.webp" alt="">
-                    <div class="about-new-info">
-                        <span class="about-new-info__time">Dec 15, 2021 2min</span>
-                        <h3 class="about-new-info__title">Top Hikes In Australia</h3>
-                        <p class="about-new-info__text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea earum voluptas, iste debitis molestias dolorum iure doloribus aspernatur, nisi aperiam placeat facere est soluta unde, ipsa recusandae voluptate optio assumenda.
-                        </p>
-                        <a class="about-new-info__btn" href="">Ver Más</a>
-                    </div>
-                </div> 
-            </div>
+                <h2 class="about__title">Fotografía Destacada</h2>
+                <?php    // foto destacada
+                    $codigo = 'CHU-FAU';
+                    destacado($codigo)
+                ?>
             </div>
         </article>
     </div>
     <div class="redes">
         <div class="redes-social">
-            <a href="#" class="redes-social__link"><i class="fab fa-facebook redes-social__ico"></i></a>
-            <a href="#" class="redes-social__link"><i class="fab fa-whatsapp redes-social__ico"></i></i></a>
-            <a href="#" class="redes-social__link"><i class="fab fa-youtube redes-social__ico"></i></i></i></a>
+            <?php redesSociales();?>
         </div>
     </div>
 </section>

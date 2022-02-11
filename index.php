@@ -11,31 +11,48 @@ $queryChuquis = mysqli_query($cnx, "SELECT * FROM chuquis LIMIT 8");
 $queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC LIMIT 6");
 
 
+// query post reciente blog
+
+$queryBlog = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'BLOG' ORDER BY id DESC LIMIT 1");
+$resultBlog = mysqli_fetch_assoc($queryBlog);
+
+$nombreBlog = $resultBlog['nombre'];
+$textoBlog = $resultBlog['texto'];
+$fotoBlog = $resultBlog['foto'];
+$fechaBlog = $resultBlog['fecha'];
+$rutaBlog = $resultBlog['ruta'];
+
+
+// query kuyaiki
+
+$queryKuyaiki = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'KUYAIKI' ORDER BY id DESC LIMIT 6");
+
 ?>
    <!-- wallpaper -->
     <section class="container-wallpaper" id="welcome">
-        <div class="container-wallpaper__background"></div>
         <video class="container-wallpaper__video" src="./admin/mediaBD/mediaInicio/<?php echo $inicioWallpaper; ?>" autoplay muted loop></video>
         <div class="wallpaper">
             <picture class="wallpaper-info">
                 <img class="wallpaper-info__img" src="./admin/mediaBD/mediaInicio/<?php echo $inicioWelcome; ?>" alt="">
                 <div class="wallpaper-info-text">
-                    <h2 class="wallpaper-info-text__title">Welcome!</h2>
-                    <span class="wallpaper-info-text__txt">Join my Journey</span>
+                    <h2 class="wallpaper-info-text__title">Bienvenido!</h2>
+                    <h1 class="wallpaper-info-text__txt">Kuyaiki Photography</h1>
                 </div>
             </picture>
+
+            
             <article class="wallpaper-about">
                 <div class="about">     
-                    <h2 class="about__title">Featured Post</h2>
+                    <h2 class="about__title">Blog Personal</h2>
                     <div class="about-new">
-                        <img  class="about-new__img" src="./build/img/bernaportada.webp" alt="">
+                        <img  class="about-new__img" src="./admin/mediaBD/<?php echo $rutaBlog; ?>/<?php echo $fotoBlog; ?>" alt="<?php echo $nombreBlog; ?>" title="<?php echo $nombreBlog; ?>">
                         <div class="about-new-info">
-                            <span class="about-new-info__time">Dec 15, 2021 2min</span>
-                            <h3 class="about-new-info__title">Top Hikes In Australia</h3>
+                            <span class="about-new-info__time">Fecha: <?php echo $fechaBlog; ?></span>
+                            <h3 class="about-new-info__title"><?php echo $nombreBlog; ?></h3>
                             <p class="about-new-info__text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea earum voluptas, iste debitis molestias dolorum iure doloribus aspernatur, nisi aperiam placeat facere est soluta unde, ipsa recusandae voluptate optio assumenda.
+                                <?php echo $textoBlog; ?>
                             </p>
-                            <a class="about-new-info__btn" href="">Ver Más</a>
+                            <a class="about-new-info__btn" href="blog.php">Ver Más</a>
                         </div>
                     </div> 
                </div>
@@ -44,9 +61,8 @@ $queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC
         </div>
         <div class="redes">
             <div class="redes-social">
-                <a href="<?php echo $inicioFacebook; ?>" target="_blank" class="redes-social__link"><i class="fab fa-facebook redes-social__ico"></i></a>
-                <a href="<?php echo $inicioWhatsapp; ?>" target="_blank" class="redes-social__link"><i class="fab fa-whatsapp redes-social__ico"></i></i></a>
-                <a href="<?php echo $inicioYoutube; ?>"  target="_blank" class="redes-social__link"><i class="fab fa-youtube redes-social__ico"></i></i></i></a>
+                <?php redesSociales();?>
+                
             </div>
         </div>
     </section>
@@ -54,7 +70,7 @@ $queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC
 
     <!-- post -->
     <section class="post-container" id="postRecientes">
-        <span class="post__title">Post Recientes</span>
+        <span class="post__title">POST RECIENTES</span>
         <div class="post-images">
             <?php while ($rowRecent = mysqli_fetch_assoc($queryRecent)):
                         $recentNombre   =   $rowRecent['nombre'];
@@ -80,7 +96,7 @@ $queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC
     <!-- distrito chuquis -->
 
     <section class="chuquis" id="chuquis">
-        <h3 class="chuquis__title">Distrito de Chuquis</h3>
+        <h3 class="chuquis__title">Distrito de Chuquis - Huánuco</h3>
         <div class="chuquis-categoria">
             <div class="carousel__contenedor" >
 
@@ -93,7 +109,7 @@ $queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC
                         $urlChuquis = $row['chuquis_url'];     
                     ?>
 					<div class="carousel__elemento">
-						<img src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $fotoChuquis; ?>" alt="<?php echo $nombreChuquis; ?>" title="<?php echo $nombreChuquis; ?>" >
+						<img src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $fotoChuquis; ?>" alt="<?php echo $nombreChuquis; ?>" title="Distrito de Chuquis - Huanuco" >
 						<article class="carousel__parrafo">
                             <span class="carousel__title"><?php echo $nombreChuquis; ?></span>
                             <p class="carousel__text"><?php echo $textoChuquis; ?></p>
@@ -111,41 +127,29 @@ $queryRecent = mysqli_query($cnx, "SELECT * FROM chuquis_tables ORDER BY id DESC
         </div>
     </section>
     <!-- fin distrito chuquis -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<!-- kUYAIKI PHOTOGRAPHY -->
+    <section class="post-container-kuyaiki" id="postRecientes">
+        <span class="post__title">KUYAIKI PHOTOGRAPHY</span>
+        <div class="post-images">
+            <?php while ($rowKuyaiki= mysqli_fetch_assoc($queryKuyaiki)):
+                        $kuyaikiNombre   =   $rowKuyaiki['nombre'];
+                        $kuyaikiTexto    =   $rowKuyaiki['texto'];
+                        $kuyaikiFoto     =   $rowKuyaiki['foto'];
+                        $kuyaikiRuta     =   $rowKuyaiki['ruta'];
+                        $kuyaikiCod    =   $rowKuyaiki['cod'];
+                 ?>
+            <picture class="post-imagen animation-initial">
+                <div class="post-imagen-img">
+                    <img class="post-imagen-img__img" src="./admin/mediaBD/<?php echo $kuyaikiRuta; ?>/<?php echo $kuyaikiFoto; ?>" alt="<?php echo $kuyaikiNombre; ?>" title='<?php echo $kuyaikiNombre; ?>'>
+                    <div class="background">
+                        <p class="background__txt"><?php echo $kuyaikiTexto; ?></p>
+                    </div>
+                </div>        
+                <span class="post-imagen__title"><?php echo $kuyaikiNombre; ?></span> 
+            </picture>
+            <?php endwhile; ?>
+        </div>   
+    </section>
+    <!-- fin post -->
 
 <?php require_once './includes/footer.php'; ?>

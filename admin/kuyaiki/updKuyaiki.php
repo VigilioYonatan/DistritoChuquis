@@ -14,8 +14,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
     $kuyaiki_wallpaper =    $_FILES['kuyaiki_wallpaper'];
-    $kuyaiki_texto =    $_POST['kuyaiki_texto'];
-    $kuyaiki_nombre =    $_POST['kuyaiki_nombre'];
+    $kuyaiki_texto =    mysqli_escape_string($cnx, $_POST['kuyaiki_texto']);
+    $kuyaiki_nombre =    mysqli_escape_string($cnx, $_POST['kuyaiki_nombre']); 
 
     if($kuyaiki_wallpaper['size'] > 40000000){
         $errores['videoPesado'] = 'Video muy pesado, max de 40MB';
@@ -73,7 +73,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl" for="kuyaiki_nombre"> titulo de Kuyaiki</label>
-            <input class="configuracion-input" type="text" value="<?php echo $kuyaikiNombre; ?>" name="kuyaiki_nombre" placeholder="Titulo">        </div>
+            <input class="configuracion-input" type="text" value="<?php echo $kuyaikiNombre; ?>" name="kuyaiki_nombre" placeholder="Titulo">
+        </div>
         <div class="configuracion-inp center">
             <label class="configuracion-lbl" for="kuyaiki_texto"> Texto de Kuyaiki</label>
             <textarea name="kuyaiki_texto" id="" cols="20" rows="5"><?php echo $kuyaikiTexto; ?></textarea>

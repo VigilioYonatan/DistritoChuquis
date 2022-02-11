@@ -13,6 +13,10 @@
 <section class="borrarPadding">
     <h2 class="album__title">Se encontró <?php  echo $querySearch -> num_rows; ?> resultados </h2>
     <div class="album">
+    <?php if($querySearch -> num_rows === 0): ?>
+        <img src="./build/img/empty_item.svg" height="500px" width="100%" alt="">
+
+    <?php else: ?>
     <?php  while($rowSearch = mysqli_fetch_assoc($querySearch)):
     
         $nombre = $rowSearch['nombre'];
@@ -32,6 +36,9 @@
         </picture>
         <?php endwhile; ?>
     </div>
+        <?php endif; ?>
+    <!-- //si no se encontró resultados -->
+    
 </section>
 
 <?php require_once './includes/footer.php';

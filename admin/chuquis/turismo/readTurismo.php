@@ -28,6 +28,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 <a class="read__add" href="index.php?action=createTurismo"><i class="fas fa-plus"></i>Agregar</a>
 <a class="read__add" href="index.php?action=updTurismo"><i class="fas fa-cog"></i></a>
+<a class="read__add" href="index.php?action=destacadoTurismo"><i class="fas fa-star"></i></a>
+
 <section class="read">
 <div class="header_fixed">
         <table>

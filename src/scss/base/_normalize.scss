@@ -1,6 +1,9 @@
 @use 'variables' as var;
 
 
+::selection{
+  background-color: rgb(102, 206, 102);
+}
 html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */

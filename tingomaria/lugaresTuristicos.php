@@ -78,7 +78,7 @@
 <!-- fin wallpaper -->
 <!-- card -->
 <section class="<?php echo isset($_GET['pagina']) && $_GET['pagina'] >= 2 ? 'borrarPadding' : 'album-container '; ?>">
-    <h2 class="album__title">Caserios</h2>
+    <h2 class="album__title">Lugares Turísticos</h2>
     <div class="album">
     <?php 
 

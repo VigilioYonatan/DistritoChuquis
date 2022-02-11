@@ -3,6 +3,7 @@
     max-width: 1600px;
     margin: 0 auto;
     padding-top: 5rem;
+
 }
 
 .post__title{
@@ -48,16 +49,18 @@
 
 
     &__title{
-        width: 90%;
+        width: 100%;
+        font-size: 1rem;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         margin: 0 auto;
         height: 20%;
-        color: var.$naranja;
-        font-family: var.$regular;
-        line-height: 3rem;
+        color: var.$blanco;
+        font-family: var.$medium;
+        line-height: 3.5rem;
         text-align: center;
+        background-color: var.$verde;
 
     }
 }
@@ -69,7 +72,7 @@
     top: 0%;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.356);
+    background-color: rgba(0, 0, 0, 0.596);
     opacity: 0;
     display: flex;
     justify-content: center;
@@ -85,6 +88,14 @@
 .background-opacity{
     opacity: 1;
 }
+
+.post-container-kuyaiki{
+    
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
 
 
 @media screen and (max-width: 1200px) {
@@ -109,13 +120,6 @@
         margin: .4rem;
     }
 
-    .post-imagen__title{
-        font-size: .8rem;
-    }
-
-    .background__txt{
-        font-size: .8rem;
-    }
 
     
 }

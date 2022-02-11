@@ -34,12 +34,12 @@ $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el
 $querykuyaiki = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'KUYAIKI' ORDER BY id DESC LIMIT $desde,$por_pagina");
 ?>
 <?php if(!isset($_GET['pagina']) || $_GET['pagina'] == 1): ?>
-<section class="blog-wallpaper">
+<section class="blog-wallpaper" id="welcome">
     <video class="blog-img" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $kuyaikiVideo; ?>" loop autoplay muted ></video>
-    <img class="blog-img-hidden" src="./build/img/PNG-kuyaiki.png" alt="">
+    <img class="blog-img-hidden" src="./build/img/portadakuyak.webp" alt="Kuyaiki Photography" title="Fotografias Kuyaiki">
     <div class="blog-wallpaper-text">
         <h2 class="blog-wallpaper-text__title"><?php echo $kuyaikiNombre; ?></h2>
-        <p class="blog-wallpaper-text__text"><?php echo $kuyaikiTexto; ?></p>
+        <h1 class="blog-wallpaper-text__text"><?php echo $kuyaikiTexto; ?></h1>
     </div>
 
 </section>
@@ -48,9 +48,9 @@ $querykuyaiki = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCo
 <section class="<?php echo isset($_GET['pagina']) && $_GET['pagina'] >= 2 ? 'borrarCard' : 'blog-container '; ?>">
     <?php if(!isset($_GET['pagina']) || $_GET['pagina'] == 1): ?>
     <div class="blog-title">
-        <h2 class="blog-title__titulo">Find your Experience</h2>
-        <p class="blog-title__text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae error sit, sequi sint voluptatum deserunt eius facere eveniet tenetur ducimus obcaecati optio est eum porro aut natus fugit incidunt vero!
+        <h2 class="blog-title__titulo">"Quiero hacer retratos tan intensos como las personas"</h2>
+        <p class="blog-title__text">La fotografía ha sido tan importante en la historia mundial ,que tambien dejó huella no solo a través de imagenes sino tambien de palabras.
+        Por eso en <b> KUYAIKI PHOTOGRAPHY</b> se pretende expresar mendiante las fotos las escencia del retoque fotográfico y inspirar tu artista interior.
         </p>
     </div>
     <?php endif; ?>
@@ -61,7 +61,7 @@ $querykuyaiki = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCo
             $kuyaikiFoto = $rowKuyaiki['foto'];
         ?>
         <picture class="photos-card">
-            <img class="photos-card__img" src="./admin/mediaBD/mediaKuyaiki/<?php echo $kuyaikiFoto; ?>" alt="">
+            <img class="photos-card__img" src="./admin/mediaBD/mediaKuyaiki/<?php echo $kuyaikiFoto; ?>" alt="Kuyaiki Photography Perú" title="Bernardo Justo Vigilio">
             <article class="photos-text">
                 <p class="photos-text__texto"> <?php echo $kuyaikiTexto; ?></p>
             </article>

@@ -34,12 +34,12 @@ $totalPaginas = ceil($total / $por_pagina); // total de paginas que habrá en el
 $queryblog = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod = 'BLOG' ORDER BY id DESC LIMIT $desde,$por_pagina");
 ?>
 <?php if(!isset($_GET['pagina']) || $_GET['pagina'] == 1): ?>
-<section class="blog-wallpaper">
+<section class="blog-wallpaper" id="welcome">
     <video class="blog-img" src="./admin/mediaBD/mediaChuquis/chuquis/<?php echo $blogVideo; ?>" loop autoplay muted ></video>
-    <img class="blog-img-hidden" src="./build/img/FONDO BLANCO-min.png" alt="">
+    <img class="blog-img-hidden" src="./build/img/FONDO BLANCO-min.png" title="Blog de Bernardo Justo Vigilio" alt="Bernardo Justo Vigilio">
     <div class="blog-wallpaper-text">
         <h2 class="blog-wallpaper-text__title"><?php echo $blogNombre; ?></h2>
-        <p class="blog-wallpaper-text__text"><?php echo $blogTexto; ?></p>
+        <h1 class="blog-wallpaper-text__text"><?php echo $blogTexto; ?></h1>
     </div>
 
 </section>
@@ -48,10 +48,8 @@ $queryblog = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod =
 <section class="<?php echo isset($_GET['pagina']) && $_GET['pagina'] >= 2 ? 'borrarCard' : 'blog-container '; ?>">
     <?php if(!isset($_GET['pagina']) || $_GET['pagina'] == 1): ?>
     <div class="blog-title">
-        <h2 class="blog-title__titulo">Find your Experience</h2>
-        <p class="blog-title__text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae error sit, sequi sint voluptatum deserunt eius facere eveniet tenetur ducimus obcaecati optio est eum porro aut natus fugit incidunt vero!
-        </p>
+        <h2 class="blog-title__titulo">"Una lágrima tuya me moja el alma mientras gimen las cuerdas de mi guitarra"</h2>
+        <p class="blog-title__text">Todo guitarrista enfrentó ese primer momento solo con su guitarra, ya sea en clases, con amigos o en soledad. Luego, los días, meses y años de prácticas lo formaron para llegar adonde está, ya sea en una pequeña banda local o frente un gran público en estadios y siendo reconocido en todo el mundo.</p>
     </div>
     <?php endif; ?>
     <div class="photos">
@@ -61,7 +59,7 @@ $queryblog = mysqli_query($cnx, "SELECT * FROM chuquis_tables WHERE ChuquisCod =
             $blogFoto = $rowBlog['foto'];
         ?>
         <picture class="photos-card">
-            <img class="photos-card__img" src="./admin/mediaBD/mediaBlog/<?php echo $blogFoto; ?>" alt="">
+            <img class="photos-card__img" src="./admin/mediaBD/mediaBlog/<?php echo $blogFoto; ?>" alt="Kuyaiki Photograpy" title="Bernardo Justo Viglio">
             <article class="photos-text">
                 <p class="photos-text__texto"> <?php echo $blogTexto; ?></p>
             </article>
